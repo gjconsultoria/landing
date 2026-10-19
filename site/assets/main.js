@@ -7,9 +7,9 @@
   // ---------------------------------------------------------------------------
   // CONFIGURACIÓN: cuando exista la página de citas de Google Calendar,
   // pega aquí su enlace (por ejemplo https://calendar.app.google/xxxx).
-  // Mientras esté vacío, «Agendar» abre WhatsApp con un mensaje para agendar.
+  // Página de citas de Google Calendar (30 min). Si se vacía, «Agendar» abre WhatsApp.
   // ---------------------------------------------------------------------------
-  var AGENDA_URL = "";
+  var AGENDA_URL = "https://calendar.app.google/MA7J7cr6MwokBeuJ8";
   var WHATSAPP = "573219300818";
   var CORREO = "gabrielajimenez.consultoria@gmail.com";
 
