@@ -5,15 +5,14 @@
 - [x] Estrategia, contenido, servicios y talleres aprobados.
 - [x] Sistema visual y logo aprobados.
 - [x] Sitio construido y probado en escritorio (1440 px) y celular (390 px).
-- [x] Repositorio `gjconsultoria/landing` creado.
+- [x] Repositorio `gjconsultoria/landing` creado, con permiso de escritura para Claude.
+- [x] Correo de Cloudflare verificado.
+- [x] Página de citas de Google Calendar conectada a todos los botones «Agendar».
 
 ## En curso
-- [ ] Verificar el correo de Cloudflare (Gabriela).
-- [ ] Publicar en `gabrielajimenez-consultoria.pages.dev`.
-- [ ] Página de citas de Google Calendar de 30 minutos (lunes a viernes, de 10 a 12 y de 2 a 4) y su enlace en `AGENDA_URL`.
+- [ ] Crear el proyecto de Pages unido a GitHub (carpeta de salida `site`) y publicar en `gabrielajimenez-consultoria.pages.dev`.
 
 ## Siguiente
-- [ ] Permiso de escritura en GitHub: instalar la app de Claude en gjconsultoria y conectar Pages al repositorio.
 - [ ] Fotos de Gabriela en «Sobre mí», y personaje definido a partir de ellas.
 - [ ] Revisión de textos con Gabriela.
 - [ ] Plantillas de los ocho módulos de los talleres.
