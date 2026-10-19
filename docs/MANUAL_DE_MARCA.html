@@ -1,0 +1,434 @@
+<title>Manual de marca Gabriela Jiménez</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap">
+<style>
+/* Concepto: manual de una sola columna ancha sobre fondo blanco; el color vive solo en piezas de arte con grano, como en la landing. */
+:root{
+  color-scheme: light;
+  --tinta:#121A16; --tinta-3:#3D4842; --blanco:#FFFFFF; --niebla:#F4F6F3;
+  --linea:rgba(18,26,22,.10); --linea-f:rgba(18,26,22,.18);
+  --selva:#0E6B48; --brote:#7ED36B; --rio:#1FA38A; --cielo:#2A6BFF; --orquidea:#8A3FFC;
+  --heliconia:#FF4F9A; --atardecer:#FF6A3D; --sol:#FFB23F; --polen:#F9E55A;
+  --indigo:#2B2D8F; --indigo-p:#16154F; --amarillo:#F7D84A; --lima:#D9F08C;
+  --fuente:"Outfit",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --grano:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 -.12'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--blanco);color:var(--tinta);font-family:var(--fuente);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:hidden}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-weight:300;text-wrap:balance;letter-spacing:-.01em}
+a{color:var(--tinta)}
+:focus-visible{outline:3px solid var(--cielo);outline-offset:3px;border-radius:10px}
+.sr{position:absolute;width:0;height:0}
+.wrap{max-width:1120px;margin:0 auto}
+.grano::after{content:"";position:absolute;inset:0;background:var(--grano);opacity:.16;mix-blend-mode:multiply;pointer-events:none;border-radius:inherit}
+
+/* Barra */
+.barra{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));background:rgba(255,255,255,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--linea)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--blanco)}
+.barra .wrap{display:flex;align-items:center;gap:20px}
+.barra__marca{display:flex;align-items:center;gap:10px;font-weight:400;font-size:15px;text-decoration:none;white-space:nowrap}
+.barra__marca svg{width:26px;height:26px}
+.barra nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.barra nav::-webkit-scrollbar{display:none}
+.barra nav a{font-size:14px;color:var(--tinta-3);text-decoration:none;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.barra nav a:hover{background:var(--niebla);color:var(--tinta)}
+
+/* Portada */
+.portada{position:relative;padding-block:clamp(56px,10vw,120px) clamp(48px,8vw,96px);isolation:isolate}
+.aura{position:absolute;z-index:-1;border-radius:50%;filter:blur(46px)}
+.aura--i{width:min(60vw,560px);aspect-ratio:1;right:-8%;top:-4%;background:radial-gradient(circle at 40% 40%,var(--indigo-p),var(--indigo) 45%,rgba(43,45,143,0) 72%);animation:flota 14s ease-in-out infinite}
+.aura--v{width:min(52vw,480px);aspect-ratio:1;right:14%;top:16%;background:radial-gradient(circle,#1FA38A,rgba(31,163,138,.8) 40%,rgba(31,163,138,0) 70%);animation:flota 17s ease-in-out -4s infinite reverse}
+.aura--a{width:min(44vw,400px);aspect-ratio:1;right:34%;top:34%;background:radial-gradient(circle,#FFF6B8,var(--amarillo) 40%,rgba(247,216,74,0) 70%);animation:flota 12s ease-in-out -7s infinite}
+.portada__grano{position:absolute;inset:0;z-index:-1;background:var(--grano);opacity:.12;mix-blend-mode:multiply;mask-image:radial-gradient(70% 90% at 75% 40%,#000,transparent);-webkit-mask-image:radial-gradient(70% 90% at 75% 40%,#000,transparent)}
+.etq{display:inline-block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-3);background:var(--niebla);padding:6px 14px;border-radius:999px}
+.portada h1{font-size:clamp(2.8rem,8vw,6.2rem);line-height:1.02;margin:22px 0 22px;max-width:11ch}
+.portada p.sub{max-width:34ch;font-size:clamp(1.05rem,2vw,1.3rem);color:var(--tinta-3)}
+.portada .meta{margin-top:36px;font-size:14px;color:var(--tinta-3)}
+@keyframes flota{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-24px,18px,0) scale(1.06)}}
+
+/* Secciones */
+section.s{padding-block:clamp(56px,8vw,104px);border-top:1px solid var(--linea)}
+.s__cab{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin-bottom:clamp(28px,4vw,48px)}
+.s__cab h2{font-size:clamp(2.2rem,5vw,4rem);line-height:1.05}
+.s__cab p{max-width:62ch;color:var(--tinta-3)}
+h3{font-size:1.5rem;margin-bottom:14px}
+.sub-s{margin-top:clamp(36px,5vw,64px)}
+.sub-s>p{color:var(--tinta-3);max-width:62ch;margin-bottom:22px}
+
+/* Principios */
+.tres{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.tres div{padding:26px;border-radius:28px;background:var(--niebla)}
+.tres b{display:block;font-weight:500;font-size:1.15rem;margin-bottom:8px}
+.tres p{color:var(--tinta-3)}
+
+/* Logo */
+.logo-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}
+.lienzo{position:relative;border-radius:36px;border:1px solid var(--linea);background:var(--blanco);padding:clamp(28px,5vw,56px);display:flex;align-items:center;justify-content:center;min-height:260px;gap:20px;flex-wrap:wrap}
+.lienzo--niebla{background:var(--niebla)}
+.lienzo figcaption{position:absolute;left:22px;bottom:16px;font-size:13px;color:var(--tinta-3)}
+.lienzo svg.m{width:clamp(110px,18vw,180px);height:auto}
+.blq{display:flex;align-items:center;gap:18px}
+.blq svg{width:68px;height:68px;flex:none}
+.blq b{display:block;font-weight:400;font-size:1.7rem;line-height:1.1}
+.blq span{display:block;font-weight:300;font-size:1rem;color:var(--tinta-3)}
+.peq{display:flex;align-items:flex-end;gap:22px}
+.peq svg{height:auto;width:110px}
+.peq span{display:block;font-size:12px;color:var(--tinta-3);text-align:center;margin-top:6px}
+.reglas{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-top:20px}
+.reglas li{list-style:none;padding:18px 20px;border-radius:22px;border:1px solid var(--linea);color:var(--tinta-3)}
+.reglas li b{display:block;color:var(--tinta);font-weight:500;margin-bottom:4px}
+.prop{font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:#FFF3C4;color:#5C4A00;padding:2px 9px;border-radius:999px;margin-left:8px;font-weight:400;vertical-align:2px}
+.mal{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.mal figure{margin:0}
+.mal .caja{height:150px;border-radius:24px;border:1px solid var(--linea);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.mal .caja svg{width:84px;height:84px}
+.mal .caja::after{content:"";position:absolute;inset:0;background:linear-gradient(to top right,transparent calc(50% - 1.5px),#D4351C calc(50% - 1.5px),#D4351C calc(50% + 1.5px),transparent calc(50% + 1.5px));opacity:.85;pointer-events:none}
+.mal figcaption{font-size:14px;color:var(--tinta-3);margin-top:10px}
+.esfera{width:84px;height:84px;border-radius:50%;background:conic-gradient(#FF4F9A,#FFB23F,#F9E55A,#7ED36B,#2A6BFF,#8A3FFC,#FF4F9A)}
+
+/* Color */
+.paleta{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,190px),1fr));gap:12px}
+.sw{position:relative;font:inherit;text-align:left;cursor:pointer;border:1px solid transparent;border-radius:26px;padding:18px;min-height:190px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;background:var(--c);color:var(--tinta);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.sw--osc{color:#fff}
+.sw--borde{border-color:var(--linea-f)}
+.sw:hover{transform:translateY(-4px);box-shadow:0 18px 40px -18px rgba(18,26,22,.45)}
+.sw__rol{font-size:12px;letter-spacing:.04em;opacity:.8;margin-bottom:auto}
+.sw__nom{font-weight:500;font-size:1.1rem}
+.sw__cod{font-size:13px;line-height:1.45;opacity:.9;font-variant-numeric:tabular-nums}
+.sw__aviso{position:absolute;top:14px;right:14px;font-size:12px;background:var(--tinta);color:#fff;padding:3px 10px;border-radius:999px;opacity:0;transform:translateY(-4px);transition:.25s}
+.sw.ok .sw__aviso{opacity:1;transform:none}
+.sw--g{min-height:230px}
+.regla-color{margin-top:18px;padding:18px 22px;border-radius:22px;background:var(--niebla);color:var(--tinta-3)}
+.regla-color b{color:var(--tinta);font-weight:500}
+.contraste{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.contraste span{padding:10px 18px;border-radius:999px;font-size:14px}
+
+/* Tipografía */
+.tipo{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px}
+.tipo__grande{border-radius:36px;background:var(--niebla);padding:clamp(24px,4vw,48px);overflow:hidden}
+.tipo__grande .aa{font-size:clamp(6rem,16vw,12rem);line-height:.9;font-weight:300;letter-spacing:-.03em}
+.tipo__grande p{margin-top:14px;color:var(--tinta-3);overflow-wrap:anywhere}
+.pesos{display:grid;gap:12px}
+.pesos div{border-radius:26px;border:1px solid var(--linea);padding:18px 22px;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+.pesos .e{font-size:1.6rem}
+.pesos small{font-size:13px;color:var(--tinta-3)}
+.tabla{width:100%;border-collapse:collapse;min-width:520px}
+.tabla th,.tabla td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--linea);vertical-align:baseline}
+.tabla th{font-weight:400;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-3)}
+.tabla td:first-child{font-weight:500;white-space:nowrap}
+.tabla td.n{font-variant-numeric:tabular-nums;color:var(--tinta-3)}
+.desborde{overflow-x:auto;border:1px solid var(--linea);border-radius:26px}
+.desborde .tabla th:first-child,.desborde .tabla td:first-child{padding-left:22px}
+.muestra{margin-top:16px;padding:clamp(24px,4vw,44px);border-radius:36px;border:1px solid var(--linea)}
+.muestra .t{font-size:clamp(2rem,5vw,3.6rem);line-height:1.08;font-weight:300;max-width:20ch}
+.muestra .p{margin-top:16px;max-width:56ch;line-height:1.62;color:var(--tinta-3)}
+
+/* Lenguajes gráficos */
+.leng{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.leng figure{margin:0}
+.pieza{position:relative;height:230px;border-radius:32px;overflow:hidden;background:var(--blanco);border:1px solid var(--linea);isolation:isolate}
+.pieza::after{content:"";position:absolute;inset:0;background:var(--grano);opacity:.15;mix-blend-mode:multiply;pointer-events:none}
+.leng figcaption{padding:14px 6px 0}
+.leng figcaption b{display:block;font-weight:500}
+.leng figcaption span{font-size:14px;color:var(--tinta-3)}
+.p-aura i{position:absolute;border-radius:50%;filter:blur(24px)}
+.p-aura i:nth-child(1){width:70%;aspect-ratio:1;left:-8%;top:-10%;background:var(--indigo)}
+.p-aura i:nth-child(2){width:60%;aspect-ratio:1;right:-6%;bottom:-14%;background:var(--rio);animation:flota 11s ease-in-out infinite}
+.p-aura i:nth-child(3){width:46%;aspect-ratio:1;left:24%;top:30%;background:var(--amarillo);animation:flota 9s ease-in-out -3s infinite}
+.p-cinta i{position:absolute;left:-20%;right:-20%;height:48px;border-radius:50%;filter:blur(7px);transform:rotate(-14deg)}
+.p-cinta i:nth-child(1){top:12%;background:linear-gradient(90deg,var(--cielo),var(--orquidea),var(--heliconia))}
+.p-cinta i:nth-child(2){top:34%;background:linear-gradient(90deg,var(--rio),var(--brote),var(--polen));animation:onda 8s ease-in-out infinite}
+.p-cinta i:nth-child(3){top:56%;background:linear-gradient(90deg,var(--atardecer),var(--sol),var(--polen))}
+.p-cinta i:nth-child(4){top:76%;background:linear-gradient(90deg,var(--orquidea),var(--cielo),var(--rio));animation:onda 10s ease-in-out -2s infinite}
+@keyframes onda{0%,100%{transform:rotate(-14deg) translateX(0)}50%{transform:rotate(-10deg) translateX(40px)}}
+.p-holo{background:conic-gradient(from 20deg at 50% 55%,#c9f3ff,#e5d1ff,#ffd1ec,#ffeccd,#d7ffd9,#c9f3ff);filter:saturate(1.1)}
+.p-holo::before{content:"";position:absolute;inset:-30%;background:conic-gradient(from 200deg,rgba(255,255,255,.0),rgba(255,255,255,.7),rgba(255,255,255,0) 40%);animation:gira 16s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.p-mult i{position:absolute;border-radius:50%;filter:blur(9px)}
+.p-luces{background:#101614}
+.p-luces i{position:absolute;border-radius:50%;filter:blur(3px);opacity:.9}
+.p-mos{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:12px}
+.p-mos i{border-radius:14px;background:linear-gradient(135deg,var(--a),var(--b))}
+.p-caja{display:flex;align-items:center;justify-content:center;background:var(--niebla)}
+.p-caja b{width:58%;height:62%;border-radius:26px;background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.2)) padding-box,conic-gradient(from 30deg,#8A3FFC,#2A6BFF,#1FA38A,#F9E55A,#FF4F9A,#8A3FFC) border-box;border:3px solid transparent;box-shadow:0 20px 50px -18px rgba(138,63,252,.55);animation:flota 10s ease-in-out infinite}
+.p-selva i{position:absolute;border-radius:60% 40% 55% 45%;filter:blur(14px)}
+
+/* Componentes */
+.comp{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}
+.fondo-vidrio{position:relative;border-radius:36px;overflow:hidden;padding:clamp(22px,4vw,40px);isolation:isolate;display:grid;gap:18px;align-content:start;min-height:300px}
+.fondo-vidrio .aura-a,.fondo-vidrio .aura-b{position:absolute;z-index:-1;border-radius:50%;filter:blur(36px)}
+.aura-a{width:70%;aspect-ratio:1;right:-14%;top:-20%;background:var(--cielo)}
+.aura-b{width:60%;aspect-ratio:1;left:-12%;bottom:-24%;background:var(--polen)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 28px;border-radius:999px;font:500 16px/1.25 var(--fuente);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.btn:hover{transform:translateY(-2px)}
+.btn--p{background:var(--tinta);color:#fff}
+.btn--s{background:rgba(255,255,255,.7);color:var(--tinta);border-color:rgba(18,26,22,.14);backdrop-filter:blur(10px)}
+.fila{display:flex;flex-wrap:wrap;gap:10px}
+.vidrio{background:rgba(255,255,255,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.8);border-radius:28px;padding:22px;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+.vidrio:hover{transform:translateY(-5px);box-shadow:0 24px 50px -24px rgba(18,26,22,.5)}
+.vidrio b{display:block;font-weight:500;margin-bottom:4px}
+.vidrio span{color:var(--tinta-3);font-size:15px}
+.pill{display:inline-block;font-size:13px;padding:5px 13px;border-radius:999px;background:var(--niebla);color:var(--tinta-3)}
+.datos{display:grid;gap:12px}
+.datos li{list-style:none;padding:16px 20px;border-radius:22px;border:1px solid var(--linea);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.datos li span:first-child{color:var(--tinta-3)}
+.datos li span:last-child{overflow-wrap:anywhere}
+
+/* Movimiento */
+.mov{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.mov li{list-style:none;padding:20px 22px;border-radius:26px;background:var(--niebla)}
+.mov b{display:block;font-weight:500;margin-bottom:2px}
+.mov span{color:var(--tinta-3);font-size:15px}
+
+/* Voz */
+.voz{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+.voz div{padding:24px;border-radius:28px;border:1px solid var(--linea)}
+.voz h3{font-size:1.2rem;font-weight:400;margin-bottom:10px}
+.voz li{list-style:none;color:var(--tinta-3);padding:6px 0;border-top:1px solid var(--linea)}
+.voz li:first-of-type{border-top:0}
+.frase{margin-top:16px;padding:clamp(24px,4vw,44px);border-radius:36px;background:var(--niebla)}
+.frase p{font-size:clamp(1.5rem,3.4vw,2.5rem);font-weight:300;line-height:1.15;max-width:22ch}
+.frase small{display:block;margin-top:12px;color:var(--tinta-3)}
+
+/* Personaje */
+.pers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+.pers>div{padding:24px;border-radius:28px;border:1px solid var(--linea)}
+.pers ul{padding:0;margin:0}
+.pers li{list-style:none;padding:8px 0;border-top:1px solid var(--linea);color:var(--tinta-3)}
+.pers li:first-child{border-top:0}
+.pers li b{color:var(--tinta);font-weight:500}
+
+footer{border-top:1px solid var(--linea);padding-block:36px 56px;color:var(--tinta-3);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:760px){.tipo{grid-template-columns:minmax(0,1fr)}.barra__marca span{display:none}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+
+<svg class="sr" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="mk-i" cx="70%" cy="42%" r="46%"><stop offset="0" stop-color="#16154F"/><stop offset=".45" stop-color="#2B2D8F" stop-opacity=".95"/><stop offset="1" stop-color="#2B2D8F" stop-opacity="0"/></radialGradient>
+    <radialGradient id="mk-v" cx="52%" cy="50%" r="46%"><stop offset="0" stop-color="#0B6F78"/><stop offset=".45" stop-color="#1FA38A" stop-opacity=".9"/><stop offset="1" stop-color="#1FA38A" stop-opacity="0"/></radialGradient>
+    <radialGradient id="mk-a" cx="30%" cy="74%" r="44%"><stop offset="0" stop-color="#FFF6B8"/><stop offset=".4" stop-color="#F7D84A" stop-opacity=".95"/><stop offset="1" stop-color="#F7D84A" stop-opacity="0"/></radialGradient>
+    <radialGradient id="mk-l" cx="26%" cy="30%" r="40%"><stop offset="0" stop-color="#D9F08C" stop-opacity=".9"/><stop offset="1" stop-color="#D9F08C" stop-opacity="0"/></radialGradient>
+    <filter id="mk-g" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .9 -.25"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+  </defs>
+</svg>
+
+<header class="barra">
+  <div class="wrap">
+    <a class="barra__marca" href="#inicio"><svg viewBox="0 0 64 64" role="img" aria-label="Aura del logo"><circle cx="32" cy="32" r="31" fill="#F4F8EC"/><circle cx="32" cy="32" r="31" fill="url(#mk-l)"/><circle cx="32" cy="32" r="31" fill="url(#mk-a)"/><circle cx="32" cy="32" r="31" fill="url(#mk-v)"/><circle cx="32" cy="32" r="31" fill="url(#mk-i)"/></svg><span>Gabriela Jiménez</span></a>
+    <nav aria-label="Secciones del manual">
+      <a href="#esencia">Esencia</a><a href="#logo">Logo</a><a href="#color">Color</a><a href="#tipografia">Tipografía</a><a href="#lenguajes">Lenguajes gráficos</a><a href="#componentes">Componentes</a><a href="#voz">Voz</a><a href="#personaje">Fotos y personaje</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="portada" id="inicio">
+  <div class="aura aura--i"></div><div class="aura aura--v"></div><div class="aura aura--a"></div><div class="portada__grano"></div>
+  <div class="wrap">
+    <span class="etq">Marca personal</span>
+    <h1>Manual de marca</h1>
+    <p class="sub">Gabriela Jiménez, consultoría en comunicación estratégica para la Amazonía colombiana.</p>
+    <p class="meta">Versión 1.0 · 18 de octubre de 2026 · Aprobado por Gabriela</p>
+  </div>
+</div>
+
+<section class="s" id="esencia"><div class="wrap">
+  <div class="s__cab"><h2>Esencia de la marca</h2>
+  <p>Fondo blanco, tipografía fina y todo el color en el arte: auras, cintas, texturas holográficas, multitudes y selva desenfocadas. Todo con grano de película y siempre en movimiento suave.</p></div>
+  <div class="tres">
+    <div><b>Blanco primero</b><p>El blanco deja respirar el texto y hace que el color del arte se vea como una pieza cuidada.</p></div>
+    <div><b>El color vive en el arte</b><p>Los párrafos y los botones principales van en tinta. El espectro amazónico se reserva para fondos y piezas gráficas.</p></div>
+    <div><b>Movimiento suave</b><p>Giros, flotación y grano en bucle. Nada brusco, y todo se apaga si la persona pide reducir el movimiento.</p></div>
+  </div>
+</div></section>
+
+<section class="s" id="logo"><div class="wrap">
+  <div class="s__cab"><h2>Logo</h2>
+  <p>Un aura con grano en tres colores, inspirada en la referencia «Radiance». El índigo va a la derecha, el verde agua al centro y el amarillo entra desde abajo a la izquierda. Un toque de lima la suaviza.</p></div>
+  <div class="logo-g">
+    <figure class="lienzo grano" style="margin:0">
+      <div class="blq"><svg viewBox="0 0 64 64" role="img" aria-label="Aura del logo"><circle cx="32" cy="32" r="31" fill="#F4F8EC"/><circle cx="32" cy="32" r="31" fill="url(#mk-l)"/><circle cx="32" cy="32" r="31" fill="url(#mk-a)"/><circle cx="32" cy="32" r="31" fill="url(#mk-v)"/><circle cx="32" cy="32" r="31" fill="url(#mk-i)"/><circle cx="32" cy="32" r="31" filter="url(#mk-g)" opacity=".5" style="mix-blend-mode:multiply"/></svg><div><b>Gabriela Jiménez</b><span>Consultoría en comunicación</span></div></div>
+      <figcaption>Versión principal, con grano. Outfit 400 y 300.</figcaption>
+    </figure>
+    <figure class="lienzo lienzo--niebla" style="margin:0">
+      <div class="peq">
+        <div><svg class="m" viewBox="0 0 64 64" role="img" aria-label="Monograma GJ" style="width:clamp(110px,18vw,170px)"><circle cx="32" cy="32" r="31" fill="#F4F8EC"/><circle cx="32" cy="32" r="31" fill="url(#mk-l)"/><circle cx="32" cy="32" r="31" fill="url(#mk-a)"/><circle cx="32" cy="32" r="31" fill="url(#mk-v)"/><circle cx="32" cy="32" r="31" fill="url(#mk-i)"/><circle cx="32" cy="32" r="14.5" fill="#fff" fill-opacity=".91" stroke="#fff"/><text x="32" y="32" text-anchor="middle" dominant-baseline="central" font-family="Outfit,system-ui,sans-serif" font-weight="300" font-size="15.5" fill="#121A16">GJ</text></svg><span>Perfil para llamadas y tarjeta</span></div>
+        <div><svg viewBox="0 0 64 64" role="img" aria-label="Aura del logo"><circle cx="32" cy="32" r="31" fill="#F4F8EC"/><circle cx="32" cy="32" r="31" fill="url(#mk-l)"/><circle cx="32" cy="32" r="31" fill="url(#mk-a)"/><circle cx="32" cy="32" r="31" fill="url(#mk-v)"/><circle cx="32" cy="32" r="31" fill="url(#mk-i)"/></svg><span>Aura sola</span></div>
+      </div>
+      <figcaption>Monograma GJ dentro del aura. Es la foto de perfil de la marca.</figcaption>
+    </figure>
+  </div>
+  <div class="reglas">
+    <li><b>Monograma GJ</b>Un círculo de vidrio blanco dentro del aura, con las letras GJ en Outfit 300 y tinta. Sirve de foto de perfil en llamadas, WhatsApp y redes, y funciona como tarjeta de presentación.</li>
+    <li><b>Tamaños pequeños</b>En el favicon y en íconos chicos el aura va sin grano y sin desenfoque, para que se vea nítida.</li>
+    <li><b>Colores del logo</b>Índigo #2B2D8F con núcleo #16154F, verde agua #1FA38A, amarillo #F7D84A y lima de apoyo #D9F08C.</li>
+    <li><b>Nombre</b>«Gabriela Jiménez» en Outfit 400, con «Consultoría en comunicación» debajo en Outfit 300.</li>
+    <li><b>Espacio libre<span class="prop">Propuesta</span></b>Deja alrededor del logo al menos la mitad del ancho del aura, sin texto ni bordes encima.</li>
+  </div>
+  <div class="sub-s">
+    <h3>Lo que no se hace</h3>
+    <p>Estos usos rompen la marca. El último recuerda por qué se descartó la esfera con todos los colores.</p>
+    <div class="mal">
+      <figure><div class="caja" style="background:var(--blanco)"><div style="transform:scaleX(1.7)"><svg viewBox="0 0 64 64" role="img" aria-label="Aura del logo"><circle cx="32" cy="32" r="31" fill="#F4F8EC"/><circle cx="32" cy="32" r="31" fill="url(#mk-l)"/><circle cx="32" cy="32" r="31" fill="url(#mk-a)"/><circle cx="32" cy="32" r="31" fill="url(#mk-v)"/><circle cx="32" cy="32" r="31" fill="url(#mk-i)"/></svg></div></div><figcaption>Estirar o deformar el aura.</figcaption></figure>
+      <figure><div class="caja" style="background:var(--blanco)"><div style="filter:hue-rotate(150deg) saturate(1.5)"><svg viewBox="0 0 64 64" role="img" aria-label="Aura del logo"><circle cx="32" cy="32" r="31" fill="#F4F8EC"/><circle cx="32" cy="32" r="31" fill="url(#mk-l)"/><circle cx="32" cy="32" r="31" fill="url(#mk-a)"/><circle cx="32" cy="32" r="31" fill="url(#mk-v)"/><circle cx="32" cy="32" r="31" fill="url(#mk-i)"/></svg></div></div><figcaption>Cambiar los colores del logo.</figcaption></figure>
+      <figure><div class="caja" style="background:conic-gradient(from 0deg,#FF4F9A,#FFB23F,#7ED36B,#2A6BFF,#8A3FFC,#FF4F9A)"><div><svg viewBox="0 0 64 64" role="img" aria-label="Aura del logo"><circle cx="32" cy="32" r="31" fill="#F4F8EC"/><circle cx="32" cy="32" r="31" fill="url(#mk-l)"/><circle cx="32" cy="32" r="31" fill="url(#mk-a)"/><circle cx="32" cy="32" r="31" fill="url(#mk-v)"/><circle cx="32" cy="32" r="31" fill="url(#mk-i)"/></svg></div></div><figcaption>Ponerlo sobre fondos de color o muy cargados.</figcaption></figure>
+      <figure><div class="caja" style="background:var(--blanco)"><div class="esfera"></div></div><figcaption>Reemplazarlo por una esfera multicolor.</figcaption></figure>
+    </div>
+  </div>
+</div></section>
+
+<section class="s" id="color"><div class="wrap">
+  <div class="s__cab"><h2>Color</h2>
+  <p>Haz clic en cualquier muestra para copiar su código. Los neutros llevan el texto y la interfaz. El espectro amazónico solo aparece en arte y fondos.</p></div>
+  <h3>Neutros</h3>
+  <div class="paleta"><button type="button" class="sw sw--osc" style="--c:#121A16" data-copiar="#121A16" aria-label="Copiar Tinta #121A16"><span class="sw__rol">Texto y botón principal</span><span class="sw__nom">Tinta</span><span class="sw__cod">#121A16<br>RGB 18, 26, 22</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button><button type="button" class="sw sw--borde" style="--c:#FFFFFF" data-copiar="#FFFFFF" aria-label="Copiar Blanco #FFFFFF"><span class="sw__rol">Fondo</span><span class="sw__nom">Blanco</span><span class="sw__cod">#FFFFFF<br>RGB 255, 255, 255</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button><button type="button" class="sw sw--borde" style="--c:#F4F6F3" data-copiar="#F4F6F3" aria-label="Copiar Niebla #F4F6F3"><span class="sw__rol">Fondo de apoyo</span><span class="sw__nom">Niebla</span><span class="sw__cod">#F4F6F3<br>RGB 244, 246, 243</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button><button type="button" class="sw sw--osc" style="--c:#3D4842" data-copiar="#3D4842" aria-label="Copiar Texto secundario #3D4842"><span class="sw__rol">Párrafos de apoyo</span><span class="sw__nom">Texto secundario</span><span class="sw__cod">#3D4842<br>RGB 61, 72, 66</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button></div>
+  <div class="contraste">
+    <span style="background:#121A16;color:#fff">Tinta sobre blanco: contraste 17:1</span>
+    <span style="background:#FFFFFF;color:#3D4842;border:1px solid var(--linea-f)">Texto secundario sobre blanco</span>
+  </div>
+  <div class="sub-s"><h3>Colores del logo</h3><div class="paleta"><button type="button" class="sw sw--osc" style="--c:#2B2D8F" data-copiar="#2B2D8F" aria-label="Copiar Índigo #2B2D8F"><span class="sw__rol">Logo, derecha</span><span class="sw__nom">Índigo</span><span class="sw__cod">#2B2D8F<br>RGB 43, 45, 143</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button><button type="button" class="sw sw--osc" style="--c:#16154F" data-copiar="#16154F" aria-label="Copiar Núcleo índigo #16154F"><span class="sw__rol">Logo, centro del índigo</span><span class="sw__nom">Núcleo índigo</span><span class="sw__cod">#16154F<br>RGB 22, 21, 79</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button><button type="button" class="sw" style="--c:#1FA38A" data-copiar="#1FA38A" aria-label="Copiar Verde agua #1FA38A"><span class="sw__rol">Logo, centro</span><span class="sw__nom">Verde agua</span><span class="sw__cod">#1FA38A<br>RGB 31, 163, 138</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button><button type="button" class="sw" style="--c:#F7D84A" data-copiar="#F7D84A" aria-label="Copiar Amarillo #F7D84A"><span class="sw__rol">Logo, abajo a la izquierda</span><span class="sw__nom">Amarillo</span><span class="sw__cod">#F7D84A<br>RGB 247, 216, 74</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button><button type="button" class="sw" style="--c:#D9F08C" data-copiar="#D9F08C" aria-label="Copiar Lima #D9F08C"><span class="sw__rol">Logo, apoyo</span><span class="sw__nom">Lima</span><span class="sw__cod">#D9F08C<br>RGB 217, 240, 140</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button></div></div>
+  <div class="sub-s"><h3>Espectro amazónico</h3>
+    <div class="paleta"><button type="button" class="sw sw--osc" style="--c:#0E6B48" data-copiar="#0E6B48" aria-label="Copiar Selva #0E6B48"><span class="sw__rol">Solo arte y fondos</span><span class="sw__nom">Selva</span><span class="sw__cod">#0E6B48<br>RGB 14, 107, 72</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button><button type="button" class="sw" style="--c:#7ED36B" data-copiar="#7ED36B" aria-label="Copiar Brote #7ED36B"><span class="sw__rol">Solo arte y fondos</span><span class="sw__nom">Brote</span><span class="sw__cod">#7ED36B<br>RGB 126, 211, 107</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button><button type="button" class="sw" style="--c:#1FA38A" data-copiar="#1FA38A" aria-label="Copiar Río #1FA38A"><span class="sw__rol">Solo arte y fondos</span><span class="sw__nom">Río</span><span class="sw__cod">#1FA38A<br>RGB 31, 163, 138</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button><button type="button" class="sw sw--osc" style="--c:#2A6BFF" data-copiar="#2A6BFF" aria-label="Copiar Cielo #2A6BFF"><span class="sw__rol">Solo arte y fondos</span><span class="sw__nom">Cielo</span><span class="sw__cod">#2A6BFF<br>RGB 42, 107, 255</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button><button type="button" class="sw sw--osc" style="--c:#8A3FFC" data-copiar="#8A3FFC" aria-label="Copiar Orquídea #8A3FFC"><span class="sw__rol">Solo arte y fondos</span><span class="sw__nom">Orquídea</span><span class="sw__cod">#8A3FFC<br>RGB 138, 63, 252</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button><button type="button" class="sw" style="--c:#FF4F9A" data-copiar="#FF4F9A" aria-label="Copiar Heliconia #FF4F9A"><span class="sw__rol">Solo arte y fondos</span><span class="sw__nom">Heliconia</span><span class="sw__cod">#FF4F9A<br>RGB 255, 79, 154</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button><button type="button" class="sw" style="--c:#FF6A3D" data-copiar="#FF6A3D" aria-label="Copiar Atardecer #FF6A3D"><span class="sw__rol">Solo arte y fondos</span><span class="sw__nom">Atardecer</span><span class="sw__cod">#FF6A3D<br>RGB 255, 106, 61</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button><button type="button" class="sw" style="--c:#FFB23F" data-copiar="#FFB23F" aria-label="Copiar Sol #FFB23F"><span class="sw__rol">Solo arte y fondos</span><span class="sw__nom">Sol</span><span class="sw__cod">#FFB23F<br>RGB 255, 178, 63</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button><button type="button" class="sw" style="--c:#F9E55A" data-copiar="#F9E55A" aria-label="Copiar Polen #F9E55A"><span class="sw__rol">Solo arte y fondos</span><span class="sw__nom">Polen</span><span class="sw__cod">#F9E55A<br>RGB 249, 229, 90</span><span class="sw__aviso" aria-hidden="true">Copiado</span></button></div>
+    <p class="regla-color"><b>Regla.</b> El espectro va en arte y fondos, nunca en párrafos ni en texto corrido. Los botones principales van en tinta con texto blanco.</p>
+  </div>
+</div></section>
+
+<section class="s" id="tipografia"><div class="wrap">
+  <div class="s__cab"><h2>Tipografía</h2>
+  <p>Una sola familia: Outfit, de Google Fonts, gratuita. Peso fino en los títulos para que se vea editorial, y peso regular en el texto para que se lea con comodidad.</p></div>
+  <div class="tipo">
+    <div class="tipo__grande"><div class="aa" aria-hidden="true">Aa</div><p>Outfit · ABCDEFGHIJKLMNÑOPQRSTUVWXYZ · abcdefghijklmnñopqrstuvwxyz · 0123456789 · áéíóú ¿?¡!</p></div>
+    <div class="pesos">
+      <div><span class="e" style="font-weight:300">Títulos</span><small>Light 300</small></div>
+      <div><span class="e" style="font-weight:400">Texto y nombre</span><small>Regular 400</small></div>
+      <div><span class="e" style="font-weight:500">Botones y énfasis</span><small>Medium 500</small></div>
+    </div>
+  </div>
+  <div class="sub-s"><h3>Escala</h3>
+    <div class="desborde"><table class="tabla"><thead><tr><th>Uso</th><th>Tamaño</th><th>Peso</th></tr></thead><tbody>
+      <tr><td>Título del hero</td><td class="n">de 2,8 a 6,2 rem</td><td class="n">300</td></tr>
+      <tr><td>Título de sección</td><td class="n">de 2,2 a 4 rem</td><td class="n">300</td></tr>
+      <tr><td>Texto</td><td class="n">17 px, interlineado de 1,55 a 1,65</td><td class="n">400</td></tr>
+      <tr><td>Botones</td><td class="n">16 px</td><td class="n">500</td></tr>
+    </tbody></table></div>
+  </div>
+  <div class="muestra"><div class="t">Lo que la Amazonía hace merece llegar más lejos</div><p class="p">Los títulos van en tipo oración, con mayúscula solo al inicio y en los nombres propios. Nunca en mayúsculas sostenidas.</p></div>
+</div></section>
+
+<section class="s" id="lenguajes"><div class="wrap">
+  <div class="s__cab"><h2>Lenguajes gráficos</h2>
+  <p>Ocho familias de arte, siempre con grano. Cada una tiene un lugar en la web y no se mezclan en una misma pieza.</p></div>
+  <div class="leng">
+    <figure><div class="pieza p-aura"><i></i><i></i><i></i></div><figcaption><b>Aura</b><span>Hero y cierre.</span></figcaption></figure>
+    <figure><div class="pieza p-cinta"><i></i><i></i><i></i><i></i></div><figcaption><b>Cintas de humo</b><span>Cómo trabajo, diagnóstico y talleres.</span></figcaption></figure>
+    <figure><div class="pieza p-holo"></div><figcaption><b>Holográfico</b><span>Marca y posicionamiento.</span></figcaption></figure>
+    <figure><div class="pieza p-mult">
+      <i style="width:44px;height:44px;left:8%;top:14%;background:var(--heliconia)"></i><i style="width:60px;height:60px;left:30%;top:46%;background:var(--cielo)"></i><i style="width:38px;height:38px;left:58%;top:12%;background:var(--sol)"></i><i style="width:70px;height:70px;left:68%;top:50%;background:var(--rio)"></i><i style="width:46px;height:46px;left:14%;top:68%;background:var(--orquidea)"></i><i style="width:34px;height:34px;left:46%;top:76%;background:var(--polen)"></i><i style="width:52px;height:52px;left:84%;top:14%;background:var(--atardecer)"></i>
+    </div><figcaption><b>Multitud desenfocada</b><span>Qué puedo aportar, narrativa y contenidos.</span></figcaption></figure>
+    <figure><div class="pieza p-luces">
+      <i style="width:56px;height:56px;left:10%;top:18%;background:#FFB23F"></i><i style="width:34px;height:34px;left:36%;top:56%;background:#FF4F9A"></i><i style="width:70px;height:70px;left:56%;top:14%;background:#2A6BFF"></i><i style="width:42px;height:42px;left:78%;top:58%;background:#F9E55A"></i><i style="width:26px;height:26px;left:22%;top:78%;background:#7ED36B"></i><i style="width:30px;height:30px;left:88%;top:16%;background:#8A3FFC"></i>
+    </div><figcaption><b>Luces</b><span>Audiovisual.</span></figcaption></figure>
+    <figure><div class="pieza p-mos">
+      <i style="--a:#7ED36B;--b:#1FA38A"></i><i style="--a:#2A6BFF;--b:#8A3FFC"></i><i style="--a:#FFB23F;--b:#FF6A3D"></i><i style="--a:#F9E55A;--b:#7ED36B"></i>
+      <i style="--a:#FF4F9A;--b:#FFB23F"></i><i style="--a:#1FA38A;--b:#2A6BFF"></i><i style="--a:#8A3FFC;--b:#FF4F9A"></i><i style="--a:#FF6A3D;--b:#F9E55A"></i>
+      <i style="--a:#0E6B48;--b:#7ED36B"></i><i style="--a:#F9E55A;--b:#FFB23F"></i><i style="--a:#2A6BFF;--b:#1FA38A"></i><i style="--a:#FF4F9A;--b:#8A3FFC"></i>
+    </div><figcaption><b>Mosaico de degradados</b><span>Proyectos, resultados y cifras.</span></figcaption></figure>
+    <figure><div class="pieza p-caja"><b></b></div><figcaption><b>Cajas iridiscentes</b><span>Soluciones digitales e IA.</span></figcaption></figure>
+    <figure><div class="pieza p-selva">
+      <i style="width:120px;height:120px;left:-20px;top:-30px;background:var(--selva)"></i><i style="width:90px;height:150px;left:36%;top:-40px;background:var(--brote)"></i><i style="width:140px;height:110px;right:-30px;top:20px;background:var(--rio)"></i><i style="width:110px;height:90px;left:10%;bottom:-30px;background:var(--brote)"></i><i style="width:130px;height:100px;right:10%;bottom:-36px;background:var(--selva)"></i>
+    </div><figcaption><b>Selva desenfocada</b><span>Bordes del hero, talleres y sobre mí.</span></figcaption></figure>
+  </div>
+</div></section>
+
+<section class="s" id="componentes"><div class="wrap">
+  <div class="s__cab"><h2>Componentes</h2>
+  <p>Botones en píldora, tarjetas de vidrio y etiquetas suaves. Los elementos de la interfaz son sobrios para que el arte lleve el color.</p></div>
+  <div class="comp">
+    <div class="fondo-vidrio"><div class="aura-a"></div><div class="aura-b"></div>
+      <div class="fila"><a class="btn btn--p" href="#componentes">Agendar conversación gratuita</a><a class="btn btn--s" href="#componentes">Escribir por WhatsApp</a></div>
+      <div class="vidrio"><b>Tarjeta de vidrio</b><span>Blanco al 80 % con desenfoque. Se eleva al pasar el cursor.</span></div>
+      <div class="fila"><span class="pill">Diagnóstico</span><span class="pill">Talleres</span><span class="pill">Amazonía</span></div>
+    </div>
+    <ul class="datos" style="margin:0;padding:0">
+      <li><span>Botón principal</span><span>Tinta con texto blanco</span></li>
+      <li><span>Botón secundario</span><span>Translúcido o con borde fino</span></li>
+      <li><span>Alto mínimo</span><span>44 px</span></li>
+      <li><span>Tarjetas</span><span>Vidrio, radio de 22 a 36 px</span></li>
+      <li><span>Etiquetas</span><span>Píldoras en gris muy suave</span></li>
+      <li><span>Foco con teclado</span><span>Contorno azul visible de 3 px</span></li>
+    </ul>
+  </div>
+  <div class="sub-s"><h3>Movimiento</h3>
+    <ul class="mov" style="margin:0;padding:0">
+      <li><b>En bucle</b><span>Giros, flotación, ondulación y grano.</span></li>
+      <li><b>Con el cursor</b><span>El fondo sigue al mouse. Solo con mouse, no en celular.</span></li>
+      <li><b>Al pasar el cursor</b><span>Las tarjetas se elevan.</span></li>
+      <li><b>Al cargar</b><span>El título entra con desenfoque.</span></li>
+      <li><b>Accesible</b><span>Todo se apaga si el dispositivo pide reducir el movimiento.</span></li>
+      <li><b>Ahorro de batería</b><span>Las animaciones se pausan fuera de pantalla.</span></li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="s" id="voz"><div class="wrap">
+  <div class="s__cab"><h2>Voz y tono</h2>
+  <p>Una consultora que conoce el territorio y habla claro. Cercana, concreta y sin adornos.</p></div>
+  <div class="voz">
+    <div><h3>Cómo suena</h3><ul style="margin:0;padding:0"><li>Primera persona: «acompaño», «te cuento», «lo hacemos juntas o juntos».</li><li>Frases cortas y verbos de acción.</li><li>Ejemplos concretos del trabajo, no promesas grandes.</li><li>Títulos en tipo oración.</li></ul></div>
+    <div><h3>Reglas de contenido</h3><ul style="margin:0;padding:0"><li>La experiencia se cuenta en términos generales, sin nombres de entidades ni de proyectos.</li><li>Sin precios en la web. Los honorarios se definen en la propuesta, después del diagnóstico.</li><li>Sin datos, clientes ni resultados que no sean reales.</li><li>Todo contacto ofrece dos caminos: WhatsApp y correo o agenda.</li></ul></div>
+    <div><h3>Zona de trabajo</h3><ul style="margin:0;padding:0"><li>Amazonas, Caquetá, Putumayo, Guaviare, Guainía y Vaupés.</li><li>Primera conversación gratuita de 30 minutos como máximo.</li><li>Lunes a viernes, de 10 a 12 y de 2 a 4, hora de Colombia.</li></ul></div>
+  </div>
+  <div class="frase"><p>Lo que la Amazonía hace merece llegar más lejos.</p><small>Frase central de la marca y título del hero.</small></div>
+  <div class="sub-s"><h3>Datos de contacto</h3>
+    <ul class="datos" style="margin:0;padding:0">
+      <li><span>Sitio web</span><span>gabrielajimenez-consultoria.pages.dev</span></li>
+      <li><span>Correo</span><span>gabrielajimenez.consultoria@gmail.com</span></li>
+      <li><span>WhatsApp</span><span>+57 321 930 0818</span></li>
+      <li><span>Agenda</span><span>Página de citas de Google Calendar, 30 minutos</span></li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="s" id="personaje"><div class="wrap">
+  <div class="s__cab"><h2>Fotos y personaje</h2>
+  <p>Este capítulo se completa cuando lleguen las fotos propias de Gabriela en territorio.</p></div>
+  <div class="pers">
+    <div><h3>Fotografía</h3><ul>
+      <li><b>Fotos propias</b> de Gabriela y del trabajo en territorio.</li>
+      <li><b>Tratamiento:</b> se pueden intervenir con un dibujo de línea encima, como en la referencia de los hongos.</li>
+      <li><b>Consentimiento:</b> las fotos de personas y comunidades requieren su autorización.</li>
+    </ul></div>
+    <div><h3>Personaje ilustrado <span class="prop">Por dibujar</span></h3><ul>
+      <li><b>Saco</b> de manga larga verde militar.</li>
+      <li><b>Cabello</b> negro, largo y ligeramente ondulado, con raya en el centro.</li>
+      <li><b>Pantalón</b> negro.</li>
+      <li><b>Calzado:</b> botas de senderismo.</li>
+      <li><b>Historia:</b> viaja de Bogotá a la Amazonía.</li>
+    </ul></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>Manual de marca · Gabriela Jiménez, consultoría en comunicación</span><span>Versión 1.0 · 18 de octubre de 2026</span></div></footer>
+
+<script>
+(function(){
+  var ms=document.querySelectorAll('[data-copiar]');
+  Array.prototype.forEach.call(ms,function(b){
+    b.addEventListener('click',function(){
+      var c=b.getAttribute('data-copiar');
+      var ok=function(){b.classList.add('ok');setTimeout(function(){b.classList.remove('ok')},1400)};
+      try{navigator.clipboard.writeText(c).then(ok,function(){})}catch(e){}
+      ok();
+    });
+  });
+})();
+</script>
