@@ -73,12 +73,12 @@
 
   // 5. «¿Te suena alguna de estas situaciones?» ----------------------------------
   var necesidades = {
-    visibles: { titulo: "Que tu trabajo llegue a quien debe conocerlo", texto: "Revisamos qué comunicas hoy, a quién y por dónde. Con eso definimos los públicos que más importan, los mensajes que sí se entienden y los canales que vale la pena cuidar.", servicio: "Diagnóstico y estrategia de comunicación", ancla: "#servicios", aura: "conic-gradient(from 0deg, #2A6BFF, #8A3FFC, #FF4F9A, #FFB23F, #2A6BFF)" },
-    contar: { titulo: "Historias que muestran lo que logras", texto: "Convertimos tus resultados en relatos claros: quiénes participan, qué cambió y por qué importa. Así tus piezas, tu web y tus presentaciones dicen lo mismo y convencen.", servicio: "Narrativa y contenidos con propósito", ancla: "#servicios", aura: "conic-gradient(from 0deg, #FFB23F, #FF6A3D, #E2306D, #F9E55A, #FFB23F)" },
-    marca: { titulo: "Una imagen que se reconoce y genera confianza", texto: "Ordenamos tu identidad: qué te hace diferente, cómo hablas y cómo te ves. Te quedas con un manual sencillo para que cualquiera de tu equipo lo aplique.", servicio: "Marca y posicionamiento", ancla: "#servicios", aura: "conic-gradient(from 0deg, #BFF3F0, #E7D8FF, #FFD9EC, #FFF6C9, #BFF3F0)" },
-    cuentas: { titulo: "Resultados claros para quien te apoya", texto: "Preparamos informes, memorias y casos que muestran el avance de tu proyecto con indicadores sencillos e historias reales, en el formato que tus aliados esperan.", servicio: "Comunicación de proyectos y resultados", ancla: "#servicios", aura: "conic-gradient(from 0deg, #0E6B48, #7ED36B, #F9E55A, #1FA38A, #0E6B48)" },
-    tiempo: { titulo: "Un plan a la medida de tus recursos reales", texto: "Priorizamos pocas acciones que sí puedes sostener, te formo para hacerlas y sumamos herramientas e inteligencia artificial que te ahorren horas.", servicio: "Talleres y soluciones digitales", ancla: "#talleres", aura: "conic-gradient(from 0deg, #9FE8FF, #8EA8FF, #E7D8FF, #C9FFEA, #9FE8FF)" },
-    vender: { titulo: "Mostrar mejor lo que ofreces", texto: "Afinamos tu propuesta y la llevamos a los canales donde te buscan: WhatsApp Business, Google y tus redes, con fotos y videos hechos con tu celular.", servicio: "Taller Contar para crecer", ancla: "#talleres", aura: "conic-gradient(from 0deg, #FF4F9A, #FF6A3D, #FFB23F, #7ED36B, #FF4F9A)" }
+    visibles: { titulo: "Que tu trabajo llegue a quien debe conocerlo", texto: "Reviso qué comunicas hoy, a quién y por dónde. Con eso definimos juntos los públicos que más importan, los mensajes que sí se entienden y los canales que vale la pena cuidar.", servicio: "Diagnóstico y estrategia de comunicación", ancla: "#servicios", aura: "conic-gradient(from 0deg, #2A6BFF, #8A3FFC, #FF4F9A, #FFB23F, #2A6BFF)" },
+    contar: { titulo: "Historias que muestran lo que logras", texto: "Convierto tus resultados en relatos claros: quiénes participan, qué cambió y por qué importa. Así tus piezas, tu web y tus presentaciones dicen lo mismo y convencen.", servicio: "Narrativa y contenidos con propósito", ancla: "#servicios", aura: "conic-gradient(from 0deg, #FFB23F, #FF6A3D, #E2306D, #F9E55A, #FFB23F)" },
+    marca: { titulo: "Una imagen que se reconoce y genera confianza", texto: "Ordeno tu identidad: qué te hace diferente, cómo hablas y cómo te ves. Te quedas con un manual sencillo para que cualquiera de tu equipo lo aplique.", servicio: "Marca y posicionamiento", ancla: "#servicios", aura: "conic-gradient(from 0deg, #BFF3F0, #E7D8FF, #FFD9EC, #FFF6C9, #BFF3F0)" },
+    cuentas: { titulo: "Resultados claros para quien te apoya", texto: "Preparo informes, memorias y casos que muestran el avance de tu proyecto con indicadores sencillos e historias reales, a partir de la información que me compartes y en el formato que tus aliados esperan.", servicio: "Comunicación de proyectos y resultados", ancla: "#servicios", aura: "conic-gradient(from 0deg, #0E6B48, #7ED36B, #F9E55A, #1FA38A, #0E6B48)" },
+    tiempo: { titulo: "Un plan a la medida de tus recursos reales", texto: "Priorizo contigo pocas acciones que sí puedes sostener, te formo para hacerlas y sumamos herramientas e inteligencia artificial que te ahorren horas.", servicio: "Talleres prácticos de comunicación", ancla: "#talleres", aura: "conic-gradient(from 0deg, #9FE8FF, #8EA8FF, #E7D8FF, #C9FFEA, #9FE8FF)" },
+    vender: { titulo: "Mostrar mejor lo que ofreces", texto: "Afino tu propuesta y la llevamos a los canales donde te buscan: WhatsApp Business, Google y tus redes, con fotos y videos hechos con tu celular.", servicio: "Taller Contar para crecer", ancla: "#talleres", aura: "conic-gradient(from 0deg, #FF4F9A, #FF6A3D, #FFB23F, #7ED36B, #FF4F9A)" }
   };
   var grupo = $("[data-necesidades]");
   if (grupo) {
@@ -99,7 +99,7 @@
 
   // 6. Cómo trabajo ----------------------------------------------------------------
   var pasos = {
-    1: { duracion: "Gratis · 30 minutos", titulo: "Una conversación para entender tu reto", texto: "Me cuentas qué hace tu organización, a quién quieres llegar y qué te preocupa hoy de tu comunicación. Por videollamada, de lunes a viernes de 10 a 12 y de 2 a 4.", resultado: "Claridad sobre si puedo ayudarte y por dónde convendría empezar." },
+    1: { duracion: "Gratis · 30 minutos", titulo: "Una conversación para entender tu reto", texto: "Me cuentas qué hace tu organización, a quién quieres llegar y qué te preocupa hoy de tu comunicación. Es para conocernos y ver por dónde empezar, no una asesoría. Por videollamada, de lunes a viernes de 10 a 12 y de 2 a 4.", resultado: "Claridad sobre si puedo ayudarte y por dónde convendría empezar." },
     2: { duracion: "Primer paso del trabajo", titulo: "Un diagnóstico de lo que funciona y lo que falta", texto: "Reviso tus canales, públicos, mensajes y recursos, y converso con tu equipo. Miro tu organización desde afuera, como la ven tus clientes y aliados.", resultado: "Un diagnóstico claro, con las prioridades ordenadas." },
     3: { duracion: "Propuesta a la medida", titulo: "Una propuesta con objetivos y prioridades", texto: "Definimos qué lograr, qué hacer primero y con qué recursos. La propuesta detalla alcance, entregables, tiempos y honorarios, sin paquetes que no necesitas.", resultado: "Un plan acordado, con objetivos medibles y un cronograma realista." },
     4: { duracion: "Ejecución conjunta", titulo: "Construimos juntos y tu equipo aprende", texto: "Ejecuto las piezas, estrategias y herramientas, y te involucro en cada decisión para que la comunicación quede instalada en tu organización.", resultado: "Piezas, herramientas y capacidades que se quedan contigo." },
@@ -134,10 +134,11 @@
     var actualizar = function () {
       var id = activo(), panel = $("[data-panel='" + id + "']", talleres);
       var marcados = $$("input:checked", panel).map(function (i) { return i.dataset.modulo; });
-      var horas = marcados.length * 2;
+      var n = marcados.length, horas = n * 2, completo = n === 4;
       $("[data-horas]", panel).textContent = horas;
-      $("[data-resumen]", panel).textContent = marcados.length + (marcados.length === 1 ? " módulo de 4" : " módulos de 4");
-      var texto = "Hola Gabriela, me interesa el taller «" + nombres[id] + "» (" + horas + " horas) con los módulos: " + marcados.join(", ") + ". Somos [número] personas.";
+      $("[data-resumen]", panel).textContent = n + (n === 1 ? " módulo" : " módulos") + (completo ? " · 10 % dto." : "");
+      var paquete = completo ? " Me interesan los 4 módulos con el 10 % de descuento." : "";
+      var texto = "Hola Gabriela, me interesa el taller «" + nombres[id] + "» (" + horas + " horas) con los módulos: " + marcados.join(", ") + "." + paquete + " Somos [número] personas.";
       linkWa.href = wa(texto);
       linkCorreo.href = "mailto:" + CORREO + "?subject=" + encodeURIComponent("Taller: " + nombres[id]) + "&body=" + encodeURIComponent(texto);
     };
@@ -169,4 +170,28 @@
     });
     actualizar();
   }
+
+  // 8. Medición de conversiones (GA4 / dataLayer) --------------------------------
+  // Registra las acciones clave. Funciona aunque todavía no esté cargado GA4:
+  // los eventos quedan en dataLayer y, cuando exista gtag, también se envían.
+  window.dataLayer = window.dataLayer || [];
+  var medir = function (evento, params) {
+    try {
+      params = params || {};
+      window.dataLayer.push(Object.assign({ event: evento }, params));
+      if (typeof window.gtag === "function") window.gtag("event", evento, params);
+    } catch (e) {}
+  };
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("a, button") : null;
+    if (!a) return;
+    var ev = a.getAttribute("data-evento") || "";
+    if (a.hasAttribute("data-agenda") || /agenda/.test(ev)) {
+      medir("agenda_click", { ubicacion: ev || "agenda" });
+    } else if (/whatsapp/.test(ev) || (a.href && a.href.indexOf("wa.me") > -1)) {
+      medir("whatsapp_click", { ubicacion: ev || "whatsapp" });
+    } else if (a.href && a.href.indexOf("mailto:") === 0) {
+      medir("correo_click", { ubicacion: ev || "correo" });
+    }
+  }, true);
 })();

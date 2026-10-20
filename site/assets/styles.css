@@ -382,6 +382,24 @@ button { font: inherit; color: inherit; }
 .incluido p { flex: 1 1 380px; font-size: 16px; }
 .incluido strong { font-weight: 500; }
 
+/* Enlace alterno del hero y bloques añadidos en la optimización */
+.hero__alterno { position: relative; z-index: 2; margin-top: 16px; font-size: 15px; color: var(--tinta-3); }
+.hero__alterno a { font-weight: 500; }
+
+.otros-apoyos { margin-top: 28px; display: grid; grid-template-columns: minmax(0, 180px) minmax(0, 1fr); gap: clamp(20px, 3vw, 36px); align-items: center;
+  padding: clamp(20px, 3vw, 32px); border-radius: var(--radio-l); border: 1px dashed rgba(18, 26, 22, .18); background: rgba(255, 255, 255, .55); }
+.otros-apoyos__arte { position: relative; height: 150px; border-radius: 18px; overflow: hidden; }
+.otros-apoyos__arte::after { content: ""; position: absolute; inset: 0; background-image: var(--grano); background-size: 240px; opacity: .2; mix-blend-mode: multiply; }
+.otros-apoyos__cuerpo { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.otros-apoyos__cuerpo > p { color: var(--tinta-3); max-width: 52em; }
+
+.talleres__regla { margin-top: 14px; font-size: 16px; color: var(--tinta-2); padding: 14px 18px; border-radius: var(--radio-m); background: rgba(18, 26, 22, .04); max-width: 44em; }
+.talleres__regla strong { font-weight: 500; }
+
+.archivo__logro { margin-top: 18px; padding: 18px 20px; border-radius: var(--radio-m); background: linear-gradient(110deg, #EEF7F1 0%, #F4F0FF 100%); display: flex; flex-direction: column; gap: 8px; }
+.archivo__logro p { font-size: 16px; color: var(--tinta-2); line-height: 1.5; }
+.archivo__logro strong { font-weight: 500; }
+
 /* ---------- 6. Sobre mí ---------- */
 .sobre__rejilla { position: relative; display: grid; grid-template-columns: minmax(0, 520px) minmax(0, 1fr); gap: clamp(32px, 6vw, 72px); align-items: center; }
 .retrato { position: relative; margin: 0; height: clamp(420px, 50vw, 640px); border-radius: var(--radio-xl); overflow: hidden; background: #EAF7F1; }
@@ -532,7 +550,7 @@ button { font: inherit; color: inherit; }
   .esfera--agua { width: 70px; height: 70px; top: 18%; }
   .esfera--violeta { display: none; }
   .hero__selva { height: 34%; filter: blur(6px); }
-  .rejilla-servicios, .folios, .cifras { grid-template-columns: minmax(0, 1fr); }
+  .rejilla-servicios, .folios, .cifras, .otros-apoyos { grid-template-columns: minmax(0, 1fr); }
   .carpetas { flex-direction: column; gap: 22px; }
   .carpeta__portada { height: 150px; }
   .folio { min-height: 0; }
