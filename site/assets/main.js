@@ -183,10 +183,14 @@
     });
   }
 
-  // 9. Medición de conversiones (GA4 / dataLayer) --------------------------------
-  // Registra las acciones clave. Funciona aunque todavía no esté cargado GA4:
-  // los eventos quedan en dataLayer y, cuando exista gtag, también se envían.
+  // 9. Medición: Google Analytics 4 + eventos de conversión ----------------------
   window.dataLayer = window.dataLayer || [];
+  if (typeof window.gtag !== "function") {
+    window.gtag = function () { window.dataLayer.push(arguments); };
+  }
+  window.gtag("js", new Date());
+  window.gtag("config", "G-D3C7HSLH9T");
+
   var medir = function (evento, params) {
     try {
       params = params || {};
