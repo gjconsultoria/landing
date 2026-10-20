@@ -13,10 +13,14 @@
 - [x] Logos en PNG y JPG + manual de marca en HTML.
 - [x] Optimización integral de la landing según la auditoría (19/10/2026): narrativa en primera persona, SEO, servicios reordenados, talleres 2/4 módulos, eventos de conversión.
 
-## En curso
-- [ ] **Confirmar las cifras de experiencia** (período, rol y respaldo de cada una) con Gabriela.
-- [ ] **Google Analytics 4**: crear la propiedad y pegar el ID de medición en `index.html`.
-- [ ] **Google Search Console**: verificar el sitio (vía GA4) y enviar el sitemap.
+## Hecho (20 oct)
+- [x] **Cifras de experiencia confirmadas** y reescritas por Gabriela.
+- [x] **Google Analytics 4** instalado (ID G-D3C7HSLH9T) y disparando, con eventos de conversión.
+- [x] **Google Search Console** verificado + sitemap enviado.
+- [x] **Cloudflare Web Analytics** activa (sin cookies).
+- [x] WhatsApp nuevo (+57 323 716 0686) en toda la web, los eventos y la firma de correo.
+- [x] Hero aligerado, botón «volver arriba», agenda sin días/horas en el texto.
+- [x] Entregables guardados en `~/Desktop/CONSULTORÍA/`.
 
 ## Pendientes anotados
 - [ ] **Tabla aproximada de costos para revisión interna** (no se publica en la web). Insumos a definir con Gabriela: horas por servicio/taller, costos operativos, revisiones incluidas, desplazamientos y margen deseado. Sirve para cotizar de forma estandarizada.
