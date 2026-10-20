@@ -10,7 +10,7 @@
   // Página de citas de Google Calendar (30 min). Si se vacía, «Agendar» abre WhatsApp.
   // ---------------------------------------------------------------------------
   var AGENDA_URL = "https://calendar.app.google/MA7J7cr6MwokBeuJ8";
-  var WHATSAPP = "573219300818";
+  var WHATSAPP = "573237160686";
   var CORREO = "gabrielajimenez.consultoria@gmail.com";
 
   var wa = function (texto) { return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto); };
@@ -99,7 +99,7 @@
 
   // 6. Cómo trabajo ----------------------------------------------------------------
   var pasos = {
-    1: { duracion: "Gratis · 30 minutos", titulo: "Una conversación para entender tu reto", texto: "Me cuentas qué hace tu organización, a quién quieres llegar y qué te preocupa hoy de tu comunicación. Es para conocernos y ver por dónde empezar, no una asesoría. Por videollamada, de lunes a viernes de 10 a 12 y de 2 a 4.", resultado: "Claridad sobre si puedo ayudarte y por dónde convendría empezar." },
+    1: { duracion: "Gratis · 30 minutos", titulo: "Una conversación para entender tu reto", texto: "Me cuentas qué hace tu organización, a quién quieres llegar y qué te preocupa hoy de tu comunicación. Es para conocernos y ver por dónde empezar, no una asesoría. Por videollamada.", resultado: "Claridad sobre si puedo ayudarte y por dónde convendría empezar." },
     2: { duracion: "Primer paso del trabajo", titulo: "Un diagnóstico de lo que funciona y lo que falta", texto: "Reviso tus canales, públicos, mensajes y recursos, y converso con tu equipo. Miro tu organización desde afuera, como la ven tus clientes y aliados.", resultado: "Un diagnóstico claro, con las prioridades ordenadas." },
     3: { duracion: "Propuesta a la medida", titulo: "Una propuesta con objetivos y prioridades", texto: "Definimos qué lograr, qué hacer primero y con qué recursos. La propuesta detalla alcance, entregables, tiempos y honorarios, sin paquetes que no necesitas.", resultado: "Un plan acordado, con objetivos medibles y un cronograma realista." },
     4: { duracion: "Ejecución conjunta", titulo: "Construimos juntos y tu equipo aprende", texto: "Ejecuto las piezas, estrategias y herramientas, y te involucro en cada decisión para que la comunicación quede instalada en tu organización.", resultado: "Piezas, herramientas y capacidades que se quedan contigo." },
@@ -171,7 +171,19 @@
     actualizar();
   }
 
-  // 8. Medición de conversiones (GA4 / dataLayer) --------------------------------
+  // 8. Botón «volver arriba» -------------------------------------------------------
+  var subir = $("[data-subir]");
+  if (subir) {
+    var verSubir = function () { subir.classList.toggle("visible", window.scrollY > 600); };
+    window.addEventListener("scroll", verSubir, { passive: true });
+    verSubir();
+    subir.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: reducido ? "auto" : "smooth" });
+      var inicio = $("#inicio"); if (inicio) inicio.focus({ preventScroll: true });
+    });
+  }
+
+  // 9. Medición de conversiones (GA4 / dataLayer) --------------------------------
   // Registra las acciones clave. Funciona aunque todavía no esté cargado GA4:
   // los eventos quedan en dataLayer y, cuando exista gtag, también se envían.
   window.dataLayer = window.dataLayer || [];
