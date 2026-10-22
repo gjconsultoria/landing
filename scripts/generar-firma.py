@@ -114,14 +114,13 @@ def construir(ruta_foto, salida):
     lienzo = Image.alpha_composite(lienzo, estrella(1440, 150, 17, (31, 163, 138), 8))
     # Texto
     d = ImageDraw.Draw(lienzo)
+    OFF = 33  # recentra el bloque verticalmente tras quitar la frase inferior
     m = marca.aura(500).resize((S * 78, S * 78), Image.LANCZOS)
-    lienzo.alpha_composite(m, (S * 66, S * 52))
-    d.text((S * 164, S * 72), "Consultoría en comunicación", font=fuente("Light", 25), fill=GRIS + (255,))
-    d.text((S * 66, S * 150), "Gabriela Jiménez", font=fuente("Medium", 76), fill=TINTA + (255,))
-    d.text((S * 70, S * 250), "Comunicación estratégica", font=fuente("Light", 36), fill=TINTA + (255,))
-    d.text((S * 70, S * 296), "para la Amazonía colombiana", font=fuente("Light", 36), fill=TINTA + (255,))
-    d.line([S * 70, S * 362, S * 640, S * 362], fill=TINTA + (255,), width=3 * S)
-    d.text((S * 70, S * 378), "Lo que la Amazonía hace merece llegar más lejos.", font=fuente("Light", 26, True), fill=GRIS + (255,))
+    lienzo.alpha_composite(m, (S * 66, S * (52 + OFF)))
+    d.text((S * 164, S * (72 + OFF)), "Consultoría en comunicación", font=fuente("Light", 25), fill=GRIS + (255,))
+    d.text((S * 66, S * (150 + OFF)), "Gabriela Jiménez", font=fuente("Medium", 76), fill=TINTA + (255,))
+    d.text((S * 70, S * (250 + OFF)), "Comunicación estratégica", font=fuente("Light", 36), fill=TINTA + (255,))
+    d.text((S * 70, S * (296 + OFF)), "para la Amazonía colombiana", font=fuente("Light", 36), fill=TINTA + (255,))
     # Grano de película
     rng = np.random.default_rng(3)
     r = np.clip(1 - np.abs(rng.normal(0, 1, (S * H, S * W))) * .028, 0, 1)
