@@ -144,10 +144,20 @@ def dib_linkedin(d, N):
     f = M.fuente("Bold", N*0.5)
     d.text((N*0.5, N*0.54), "in", font=f, fill=(255, 255, 255, 255), anchor="mm")
 
+def dib_web(d, N):
+    w = (255, 255, 255, 255)
+    cx, cy, r = N*0.5, N*0.5, N*0.33
+    sw = int(N*0.072)
+    d.ellipse([cx-r, cy-r, cx+r, cy+r], outline=w, width=sw)
+    d.line([cx-r, cy, cx+r, cy], fill=w, width=sw)
+    d.ellipse([cx-r*0.46, cy-r, cx+r*0.46, cy+r], outline=w, width=sw)
+
 if __name__ == "__main__":
     whatsapp_cover()
     meet_fondo(True)
     meet_fondo(False)
-    icono_pill("whatsapp", (37, 211, 102), dib_whatsapp)
-    icono_pill("linkedin", (10, 102, 194), dib_linkedin)
+    # Iconos de la firma, en la tinta de la marca (no en los colores oficiales de cada red)
+    icono_pill("whatsapp", TINTA, dib_whatsapp)
+    icono_pill("linkedin", TINTA, dib_linkedin)
+    icono_pill("web", TINTA, dib_web)
     print("ok")
