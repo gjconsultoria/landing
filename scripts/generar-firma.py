@@ -84,9 +84,9 @@ def construir(ruta_foto, salida):
     a = marca.aura(900).resize((S * 560, S * 560), Image.LANCZOS)
     cap = Image.new("RGBA", lienzo.size, (0, 0, 0, 0)); cap.alpha_composite(a, (S * 890, S * -70))
     lienzo = Image.alpha_composite(lienzo, cap)
-    # Foto en blanco y negro dentro de un arco
+    # Foto a color dentro de un arco
     foto = Image.open(ruta_foto).convert("RGB").crop((95, 40, 805, 920))
-    foto = ImageOps.autocontrast(ImageOps.grayscale(foto), cutoff=1).convert("RGB")
+    foto = ImageOps.autocontrast(foto, cutoff=1)
     caja = (1010, 36, 1340, 450)
     fw, fh = (caja[2] - caja[0]) * S, (caja[3] - caja[1]) * S
     foto = foto.resize((fw, int(fw * 880 / 710)), Image.LANCZOS)
