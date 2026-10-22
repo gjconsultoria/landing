@@ -22,9 +22,14 @@
 - [x] Hero aligerado, botón «volver arriba», agenda sin días/horas en el texto.
 - [x] Entregables guardados en `~/Desktop/CONSULTORÍA/`.
 
+## Hecho (22 oct)
+- [x] **Rediseño visual «Dosel»** (ver `UNIVERSO_DOSEL.md`): inmersión en la selva, hojas interactivas, cortina de transición, acordeón de servicios, foto de Gabriela en «Sobre mí». Textos sin cambios. Página 21 % más corta en escritorio.
+- [x] Firma de correo con íconos en tinta, foto a color; portada de WhatsApp Business y fondos de Meet en la carpeta.
+
 ## Pendientes anotados
 - [ ] **Tabla aproximada de costos para revisión interna** (no se publica en la web). Insumos a definir con Gabriela: horas por servicio/taller, costos operativos, revisiones incluidas, desplazamientos y margen deseado. Sirve para cotizar de forma estandarizada.
-- [ ] Fotos propias de Gabriela en «Sobre mí» y el personaje ilustrado.
+- [ ] Fotos de Gabriela en territorio y el personaje ilustrado (la foto profesional ya está en «Sobre mí»).
+- [ ] Animaciones de entrada y salida para redes a partir del universo «Dosel».
 - [ ] Plantillas editables de los módulos de los talleres.
 - [ ] Decidir la conversión principal en GA4/Ads antes de cualquier campaña (ver `ESTRATEGIA_SEM.md`).
 - [ ] WhatsApp Business con el mismo número (opcional y gratis).
