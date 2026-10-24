@@ -33,26 +33,73 @@ def fondo(W, H, base, capas, grano=0.03):
 def texto_centrado(d, cx, y, txt, f, fill, anchor="mm"):
     d.text((cx, y), txt, font=f, fill=fill, anchor=anchor)
 
+def _tam_ajustado(d, txt, peso, tam_ini, ancho_max, tam_min=20):
+    """Reduce el tamaño de fuente hasta que el texto quepa en ancho_max."""
+    tam = tam_ini
+    while tam > tam_min:
+        f = M.fuente(peso, tam)
+        if d.textlength(txt, font=f) <= ancho_max:
+            return f
+        tam -= 2
+    return M.fuente(peso, tam_min)
+
 # ---------- 1. Portada de WhatsApp Business (16:9, alta resolución) ----------
+# WhatsApp Business monta la foto de perfil como un círculo grande centrado
+# sobre el tercio inferior de la portada (y no se puede mover ni agrandar
+# aparte). Por eso todo el contenido va arriba y a los costados; el centro
+# y la franja inferior quedan solo con el fondo decorativo.
 def whatsapp_cover():
     W, H = 1920, 1080
     capas = [
-        (0.20, 0.78, 0.42, 0.62, [(0, (255, 246, 184), .95), (.4, AMARILLO, .9), (1, AMARILLO, 0)]),
-        (0.12, 0.30, 0.40, 0.55, [(0, LIMA, .8), (1, LIMA, 0)]),
-        (0.52, 0.50, 0.40, 0.72, [(0, (11, 111, 120), .9), (.45, AGUA, .8), (1, AGUA, 0)]),
-        (0.80, 0.34, 0.42, 0.7, [(0, INDIGO_P, .95), (.45, INDIGO, .9), (1, INDIGO, 0)]),
+        (0.14, 0.70, 0.40, 0.62, [(0, (255, 246, 184), .95), (.4, AMARILLO, .9), (1, AMARILLO, 0)]),
+        (0.08, 0.24, 0.38, 0.5, [(0, LIMA, .75), (1, LIMA, 0)]),
+        (0.5, 0.52, 0.38, 0.85, [(0, (11, 111, 120), .55), (.5, AGUA, .4), (1, AGUA, 0)]),
+        (0.92, 0.30, 0.40, 0.62, [(0, INDIGO_P, .95), (.45, INDIGO, .9), (1, INDIGO, 0)]),
+        (0.86, 0.76, 0.34, 0.5, [(0, (11, 111, 120), .8), (1, AGUA, 0)]),
     ]
     img = fondo(W, H, (246, 249, 240), capas).convert("RGBA")
-    # Monograma GJ centrado-arriba
-    mg = M.monograma(520).resize((360, 360), Image.LANCZOS)
-    img.alpha_composite(mg, ((W - 360) // 2, 150))
+    # Tarjetas de vidrio detrás de cada columna de texto: garantizan
+    # contraste sin importar qué tan oscuro quede el degradado ahí, y
+    # se leen como una pieza de diseño (no como una mancha difusa).
+    def tarjeta(x0, y0, x1, y1):
+        capa = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        cd = ImageDraw.Draw(capa)
+        cd.rounded_rectangle([x0, y0, x1, y1], radius=28, fill=(250, 251, 246, 198))
+        cd.rounded_rectangle([x0, y0, x1, y1], radius=28, outline=(255, 255, 255, 130), width=2)
+        return capa.filter(ImageFilter.GaussianBlur(1))
+    img = Image.alpha_composite(img, tarjeta(50, 418, 648, 716))
+    img = Image.alpha_composite(img, tarjeta(1272, 418, 1870, 648))
     d = ImageDraw.Draw(img)
-    texto_centrado(d, W/2, 620, "Gabriela Jiménez", M.fuente("Medium", 118), TINTA + (255,))
-    texto_centrado(d, W/2, 712, "Consultoría en comunicación estratégica", M.fuente("Light", 54), TINTA + (255,))
-    texto_centrado(d, W/2, 770, "para la Amazonía colombiana", M.fuente("Light", 54), TINTA + (255,))
-    # Línea fina + frase (zona superior-media, lejos del borde inferior que tapa la foto de perfil)
-    d.line([W/2 - 300, 858, W/2 + 300, 858], fill=TINTA + (255,), width=3)
-    texto_centrado(d, W/2, 905, "Lo que la Amazonía hace merece llegar más lejos", M.fuente("LightItalic", 42), GRIS + (255,))
+
+    # Monograma GJ, centrado arriba: la zona alta del todo sí queda libre.
+    LOGO = 220
+    mg = M.monograma(520).resize((LOGO, LOGO), Image.LANCZOS)
+    img.alpha_composite(mg, ((W - LOGO) // 2, 56))
+
+    # Columna izquierda: nombre y cargo. Ancho limitado para no invadir
+    # el centro, donde se monta la foto de perfil circular.
+    IZQ_X, IZQ_ANCHO = 110, 470
+    f_nombre = _tam_ajustado(d, "Gabriela Jiménez", "Medium", 84, IZQ_ANCHO)
+    d.text((IZQ_X, 470), "Gabriela Jiménez", font=f_nombre, fill=TINTA + (255,), anchor="lm")
+    f_cargo = M.fuente("Light", 36)
+    d.text((IZQ_X, 540), "Consultora en comunicación", font=f_cargo, fill=GRIS + (255,), anchor="lm")
+    d.text((IZQ_X, 582), "estratégica", font=f_cargo, fill=GRIS + (255,), anchor="lm")
+    d.line([IZQ_X, 630, IZQ_X + 150, 630], fill=TINTA + (255,), width=3)
+    f_terr = M.fuente("LightItalic", 32)
+    d.text((IZQ_X, 668), "Amazonía colombiana", font=f_terr, fill=GRIS + (255,), anchor="lm")
+
+    # Columna derecha: contacto, alineada a la derecha y con el mismo
+    # margen de seguridad respecto al centro.
+    DER_X, DER_ANCHO = 1810, 470
+    f_etq = M.fuente("Light", 32)
+    d.text((DER_X, 470), "Escríbeme", font=f_etq, fill=GRIS + (255,), anchor="rm")
+    correo = "gabrielajimenez.consultoria@gmail.com"
+    f_correo = _tam_ajustado(d, correo, "Medium", 42, DER_ANCHO)
+    d.text((DER_X, 516), correo, font=f_correo, fill=TINTA + (255,), anchor="rm")
+    d.line([DER_X - 150, 564, DER_X, 564], fill=TINTA + (255,), width=3)
+    f_sub = _tam_ajustado(d, "Respuesta por aquí mismo", "LightItalic", 32, DER_ANCHO)
+    d.text((DER_X, 602), "Respuesta por aquí mismo", font=f_sub, fill=GRIS + (255,), anchor="rm")
+
     out = os.path.join(RAIZ, "brand", "portadas")
     os.makedirs(out, exist_ok=True)
     rgb = img.convert("RGB")
@@ -156,8 +203,10 @@ if __name__ == "__main__":
     whatsapp_cover()
     meet_fondo(True)
     meet_fondo(False)
-    # Iconos de la firma, en la tinta de la marca (no en los colores oficiales de cada red)
-    icono_pill("whatsapp", TINTA, dib_whatsapp)
+    # Iconos de la firma, en la tinta de la marca (no en los colores oficiales de cada red).
+    # ic-whatsapp.png NO se regenera aquí: se reemplazó a mano por una versión
+    # basada en el logo oficial de WhatsApp (ver site/firma/). dib_whatsapp()
+    # se deja solo como respaldo si hiciera falta recrearlo desde cero.
     icono_pill("linkedin", TINTA, dib_linkedin)
     icono_pill("web", TINTA, dib_web)
     print("ok")
