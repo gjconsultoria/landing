@@ -837,6 +837,127 @@ button { font: inherit; color: inherit; }
   .grano { opacity: .045; }
 }
 
+/* ============================================================
+   VENTANAS AL TERRITORIO — fotografías reales de la Amazonía
+   Tarjetas en perspectiva que se enderezan al pasar por el centro
+   de la pantalla. El giro lo marca --p (0 entra, .5 centro, 1 sale),
+   que escribe el JS; sin JS quedan rectas y legibles.
+   ============================================================ */
+.ventana {
+  --p: .5; --rot: 0deg; --lado: 1; --giro: 9; --alza: 34px;
+  position: relative; display: block; margin: 0; border-radius: 18px; overflow: hidden;
+  background: var(--niebla); isolation: isolate;
+  box-shadow: 0 18px 44px rgba(10, 40, 28, .17), 0 2px 8px rgba(10, 40, 28, .10);
+  transform-style: preserve-3d; will-change: transform;
+  transform:
+    perspective(1300px)
+    rotateX(calc((.5 - var(--p)) * -1 * var(--giro) * 1deg))
+    rotateY(calc((.5 - var(--p)) * var(--lado) * var(--giro) * .8deg))
+    rotate(var(--rot))
+    translate3d(var(--dx, 0px), calc((.5 - var(--p)) * var(--alza)), 0);
+  transition: box-shadow .5s var(--sale), filter .5s var(--sale);
+}
+.ventana::after {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  border-radius: inherit; border: 1px solid rgba(255, 255, 255, .5);
+  background: linear-gradient(160deg, rgba(255, 255, 255, .22), transparent 42%, rgba(7, 61, 43, .16));
+}
+.ventana img {
+  display: block; width: 100%; height: 100%; object-fit: cover;
+  transform: scale(1.02); transition: transform .9s var(--sale), filter .9s var(--sale);
+}
+.ventana:hover { box-shadow: 0 26px 60px rgba(10, 40, 28, .25), 0 3px 10px rgba(10, 40, 28, .12); }
+.ventana:hover img { transform: scale(1.07); }
+.ventana:focus-visible { outline: 3px solid var(--rio); outline-offset: 4px; }
+
+/* --- Ventanas del hero: entran con el dosel y siguen al cursor --- */
+.ventanas-hero { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.ventanas-hero .ventana {
+  position: absolute; pointer-events: auto;
+  width: var(--w); aspect-ratio: var(--ar, 4 / 3);
+  left: calc(var(--x) * 1%); top: calc(var(--y) * 1%);
+  translate: -50% -50%;
+  opacity: 0; animation: ventana-entra 1.5s var(--sale) forwards;
+  animation-delay: var(--retardo, 1.1s);
+  --dx: var(--vx, 0px);
+}
+.ventanas-hero .ventana::before {
+  content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background: linear-gradient(to top, rgba(7, 61, 43, .28), transparent 55%);
+}
+@keyframes ventana-entra {
+  from { opacity: 0; transform: perspective(1300px) rotate(var(--rot)) translate3d(0, 26px, 0) scale(.94); }
+  to   { opacity: 1; }
+}
+
+/* --- Franja a todo lo ancho: una sola foto con parallax --- */
+.franja-foto {
+  position: relative; height: clamp(300px, 42vw, 520px); overflow: hidden;
+  background: var(--selva-honda); isolation: isolate;
+}
+.franja-foto img {
+  position: absolute; inset: -12% 0 -12%; width: 100%; height: 124%;
+  object-fit: cover; will-change: transform;
+  transform: translate3d(0, calc((var(--p, .5) - .5) * -9%), 0) scale(1.04);
+}
+.franja-foto::after {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 50% 120%, rgba(7, 61, 43, .55), transparent 62%),
+    linear-gradient(to bottom, rgba(244, 246, 243, .92), rgba(244, 246, 243, 0) 22%, rgba(244, 246, 243, 0) 76%, rgba(244, 246, 243, .95));
+}
+.franja-foto .hoja { z-index: 3; }
+
+/* --- Carril del territorio: la fila de fotos del recorrido --- */
+.carril {
+  position: relative; margin-top: clamp(40px, 5vw, 64px);
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 22px); align-items: start;
+}
+.carril .ventana { width: 100%; aspect-ratio: 4 / 3; --giro: 7; }
+.carril .ventana--alta { aspect-ratio: 3 / 4; }
+.carril .ventana:nth-child(2n) { margin-top: clamp(16px, 2.4vw, 38px); }
+.carril .ventana:nth-child(4n) { margin-top: clamp(8px, 1.2vw, 18px); }
+
+@media (max-width: 1080px) {
+  .carril { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px) {
+  /* En celular el carril se desliza de lado: ocupa poco alto y se explora igual */
+  .carril {
+    display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin-inline: calc(var(--gutter) * -1); padding: 6px var(--gutter) 18px;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .carril::-webkit-scrollbar { display: none; }
+  .carril .ventana {
+    flex: 0 0 78%; scroll-snap-align: start; margin-top: 0 !important;
+    aspect-ratio: 4 / 3; --giro: 0;
+  }
+  .carril .ventana--alta { aspect-ratio: 4 / 3; }
+  /* En el hero del celular el texto manda: las fotos estorbarían la lectura.
+     El territorio aparece igual en la franja y en el carril. */
+  .ventanas-hero { display: none; }
+}
+
+/* --- Foto de fondo en el cierre nocturno --- */
+.contacto__foto {
+  position: absolute; inset: 0; z-index: 0; overflow: hidden;
+}
+.contacto__foto img {
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: .3; filter: saturate(.72) brightness(.62) contrast(1.05);
+  will-change: transform;
+  transform: translate3d(0, calc((var(--p, .5) - .5) * -6%), 0) scale(1.08);
+}
+.contacto__foto::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, var(--noche) 2%, rgba(11, 26, 38, .55) 38%, rgba(11, 26, 38, .72) 100%),
+    radial-gradient(90% 70% at 50% 40%, rgba(31, 163, 138, .16), transparent 70%);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -845,4 +966,7 @@ button { font: inherit; color: inherit; }
   .por-dibujar .trazo, .por-dibujar .liana, .por-dibujar .recorrido__rio path { --dibuja: 0; stroke-dashoffset: 0; }
   .por-dibujar .liana__hojas .hoja { transform: translate(-50%, -100%) rotate(var(--rot)); }
   .cortina { display: none; }
+  .ventana { transform: rotate(var(--rot)) !important; }
+  .ventanas-hero .ventana { opacity: 1; animation: none; }
+  .franja-foto img, .contacto__foto img { transform: none !important; }
 }

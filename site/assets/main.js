@@ -515,4 +515,92 @@
     }, { threshold: 0.6 });
     $$(".cifra__valor").forEach(function (el) { ioCifras.observe(el); });
   }
+
+  // 19. VENTANAS AL TERRITORIO ------------------------------------------
+  // Cada foto recibe --p: 0 cuando asoma por abajo, .5 en el centro de la
+  // pantalla y 1 cuando termina de salir. El CSS convierte ese número en
+  // la inclinación. Un solo rAF para todas, y solo mientras se ven.
+  if (!reducido) {
+    var piezas = [];
+    $$(".carril .ventana, [data-franja]").forEach(function (el) { piezas.push({ el: el, visible: false, p: -1 }); });
+
+    if (piezas.length) {
+      var pendiente = false;
+
+      var actualizar = function () {
+        pendiente = false;
+        var alto = window.innerHeight || 1;
+        for (var i = 0; i < piezas.length; i++) {
+          var it = piezas[i];
+          if (!it.visible) continue;
+          var r = it.el.getBoundingClientRect();
+          var p = (alto - r.top) / (alto + r.height);
+          p = p < 0 ? 0 : p > 1 ? 1 : p;
+          if (Math.abs(p - it.p) < 0.004) continue;
+          it.p = p;
+          it.el.style.setProperty("--p", p.toFixed(3));
+        }
+      };
+
+      var pedir = function () {
+        if (!pendiente) { pendiente = true; requestAnimationFrame(actualizar); }
+      };
+
+      if ("IntersectionObserver" in window) {
+        var ioVent = new IntersectionObserver(function (entradas) {
+          entradas.forEach(function (e) {
+            for (var i = 0; i < piezas.length; i++) {
+              if (piezas[i].el === e.target) { piezas[i].visible = e.isIntersecting; break; }
+            }
+          });
+          pedir();
+        }, { rootMargin: "120px 0px" });
+        piezas.forEach(function (it) { ioVent.observe(it.el); });
+      } else {
+        piezas.forEach(function (it) { it.visible = true; });
+      }
+
+      window.addEventListener("scroll", pedir, { passive: true });
+      window.addEventListener("resize", pedir, { passive: true });
+      pedir();
+    }
+
+    // Las dos ventanas del hero también se apartan del cursor, como las hojas.
+    var marcoHero = $(".hero");
+    var ventHero = $$(".ventanas-hero .ventana");
+    if (marcoHero && ventHero.length && window.matchMedia("(pointer: fine)").matches) {
+      var estado = ventHero.map(function (el) { return { el: el, x: 0, y: 0, tx: 0, ty: 0 }; });
+      var vivo = false, verHero = true;
+
+      var pasoVent = function () {
+        var quieto = true;
+        for (var i = 0; i < estado.length; i++) {
+          var v = estado[i];
+          v.x += (v.tx - v.x) * 0.07;
+          v.y += (v.ty - v.y) * 0.07;
+          if (Math.abs(v.tx - v.x) > 0.15 || Math.abs(v.ty - v.y) > 0.15) quieto = false;
+          v.el.style.setProperty("--vx", v.x.toFixed(1) + "px");
+          v.el.style.setProperty("--p", (0.5 + v.y / 260).toFixed(3));
+        }
+        if (!quieto && verHero) requestAnimationFrame(pasoVent); else vivo = false;
+      };
+
+      window.addEventListener("pointermove", function (e) {
+        if (!verHero) return;
+        var cx = e.clientX / (window.innerWidth || 1) - 0.5;
+        var cy = e.clientY / (window.innerHeight || 1) - 0.5;
+        for (var i = 0; i < estado.length; i++) {
+          var signo = i % 2 === 0 ? -1 : 1;
+          estado[i].tx = cx * 26 * signo;
+          estado[i].ty = cy * 20 * signo;
+        }
+        if (!vivo) { vivo = true; requestAnimationFrame(pasoVent); }
+      }, { passive: true });
+
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (en) { verHero = en[0].isIntersecting; }).observe(marcoHero);
+      }
+    }
+  }
+
 })();
