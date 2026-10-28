@@ -26,9 +26,14 @@
 - [x] **Rediseño visual «Dosel»** (ver `UNIVERSO_DOSEL.md`): inmersión en la selva, hojas interactivas, cortina de transición, acordeón de servicios, foto de Gabriela en «Sobre mí». Textos sin cambios. Página 21 % más corta en escritorio.
 - [x] Firma de correo con íconos en tinta, foto a color; portada de WhatsApp Business y fondos de Meet en la carpeta.
 
+## Hecho (28 oct)
+- [x] **Fotografías propias del territorio en la landing**: 12 fotos de Amazonas y Guainía elegidas entre las 100 de las carpetas de viaje, preeditadas con `scripts/editar-fotos.py` (quita de neblina, sombras, vibrancia, enfoque). Ninguna muestra marcas de terceros.
+- [x] Recorrido interactivo: ventanas en el hero que siguen al cursor, franja de los cerros de Mavecure, carril de ocho fotos junto a Leticia / Puerto Nariño / Guainía y río al atardecer en el cierre.
+- [x] Revisión de celular: botones, acordeón de servicios, pestañas de talleres y menú probados uno por uno; carril deslizable; sin desbordamiento horizontal. Primera carga: 102 KB en celular.
+
 ## Pendientes anotados
 - [ ] **Tabla aproximada de costos para revisión interna** (no se publica en la web). Insumos a definir con Gabriela: horas por servicio/taller, costos operativos, revisiones incluidas, desplazamientos y margen deseado. Sirve para cotizar de forma estandarizada.
-- [ ] Fotos de Gabriela en territorio y el personaje ilustrado (la foto profesional ya está en «Sobre mí»).
+- [ ] Fotos de Gabriela **ella misma** en territorio y el personaje ilustrado (ya están las fotos de paisaje y comunidad que tomó en Amazonas y Guainía).
 - [ ] Animaciones de entrada y salida para redes a partir del universo «Dosel».
 - [ ] Plantillas editables de los módulos de los talleres.
 - [ ] Decidir la conversión principal en GA4/Ads antes de cualquier campaña (ver `ESTRATEGIA_SEM.md`).
