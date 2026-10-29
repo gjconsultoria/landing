@@ -15,7 +15,7 @@ AGENDA = "https://calendar.app.google/MA7J7cr6MwokBeuJ8"
 WA = "https://wa.me/573237160686?text="
 CORREO = "gabrielajimenez.consultoria@gmail.com"
 SITIO = "https://gabrielajimenez-consultoria.pages.dev/"
-VER = "20261029c"
+VER = "20261029d"
 
 
 def hoja(x, y, w, rot, capa=2, forma="hoja-palma", deg="g-selva", ar="3/5"):
@@ -94,14 +94,11 @@ TALLERES = {
 
 TERRITORIOS = [
     ("gua-mavecure-rio", "Guainía", "Cerros de piedra sobre el río, en el Guainía"),
-    ("ama-chiguiro-pollitos", "Amazonas", "Un chigüiro y una gallina con sus pollitos en el pasto"),
-    ("ama-raices-ceiba", "Amazonas", "Raíces de un árbol gigante con personas caminando sobre ellas"),
-    ("gua-cerro-cielo", "Guainía", "Los cerros de Mavecure recortados contra un cielo de nubes"),
     ("ama-victoria", "Amazonas", "Victorias regias abiertas sobre el agua"),
     ("ama-perro-canoa", "Amazonas", "Un perro mirando la selva desde la canoa"),
     ("gua-espejo-rio", "Guainía", "El río como un espejo que refleja las nubes"),
     ("ama-dosel-arbol", "Amazonas", "Un árbol gigante visto desde abajo, contra el cielo"),
-    ("ama-bote-rio", "Amazonas", "Un bote de madera navegando el río"),
+    ("ama-casa-rio", "Amazonas", "Una casa flotante sobre el río"),
     ("ama-escuela", "Amazonas", "Escuela rural de madera en una comunidad"),
 ]
 
