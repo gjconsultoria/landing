@@ -360,13 +360,20 @@ button { font: inherit; color: inherit; }
 .sobre { background: var(--niebla); }
 .sobre__rejilla { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); gap: clamp(28px, 5vw, 70px); align-items: center; }
 
-/* Retrato: marco limpio, sin adornos encima de la foto */
-.retrato { position: relative; margin: 0; }
-.retrato__marco {
-  display: block; overflow: hidden; border-radius: var(--radio-g);
-  box-shadow: 0 22px 48px rgba(10, 40, 28, .16), 0 2px 8px rgba(10, 40, 28, .08);
+/* Retrato: circular, con el anillo iridiscente de la marca alrededor */
+.retrato { position: relative; margin: 0 auto; width: min(100%, 300px); aspect-ratio: 1/1; }
+.retrato__anillo {
+  position: absolute; inset: -12px; border-radius: 50%;
+  background: var(--iris); animation: girar-anillo 16s linear infinite;
 }
-.retrato__marco img { display: block; width: 100%; height: auto; }
+.retrato__marco {
+  position: relative; z-index: 1; display: block; width: 100%; height: 100%; overflow: hidden;
+  border-radius: 50%; border: 7px solid var(--niebla);
+  box-shadow: 0 22px 48px rgba(10, 40, 28, .18), 0 2px 8px rgba(10, 40, 28, .1);
+}
+.retrato__marco img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@keyframes girar-anillo { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .retrato__anillo { animation: none; } }
 
 /* Territorios: una fila pareja, alineada, con el rótulo a la misma altura */
 .territorios { margin-top: clamp(44px, 5vw, 72px); }

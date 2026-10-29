@@ -15,7 +15,7 @@ AGENDA = "https://calendar.app.google/MA7J7cr6MwokBeuJ8"
 WA = "https://wa.me/573237160686?text="
 CORREO = "gabrielajimenez.consultoria@gmail.com"
 SITIO = "https://gabrielajimenez-consultoria.pages.dev/"
-VER = "20261028c"
+VER = "20261029a"
 
 
 def hoja(x, y, w, rot, capa=2, forma="hoja-palma", deg="g-selva", ar="3/5"):
@@ -382,8 +382,9 @@ def construir():
   <div class="envoltura">
     <div class="sobre__rejilla">
       <figure class="retrato revela">
+        <span class="retrato__anillo" aria-hidden="true"></span>
         <span class="retrato__marco">
-          <img src="/assets/gabriela-920.webp" srcset="/assets/gabriela-560.webp 560w, /assets/gabriela-920.webp 920w" sizes="(max-width: 860px) 62vw, 330px" width="920" height="1150" alt="Gabriela Jiménez en campo" loading="lazy" decoding="async">
+          <img src="/assets/gabriela-920.webp" srcset="/assets/gabriela-560.webp 560w, /assets/gabriela-920.webp 920w" sizes="(max-width: 860px) 62vw, 300px" width="920" height="920" alt="Gabriela Jiménez en campo" loading="lazy" decoding="async">
         </span>
       </figure>
       <div class="sobre__texto revela">

@@ -1,6 +1,7 @@
 """Preedición del retrato de «Sobre mí».
 Suaviza la textura de la piel sin tocar los rasgos y revela contraste y
-color. El fondo de la foto se respeta: no se desenfoca ni se recorta.
+color. El fondo de la foto se respeta: no se desenfoca. Recorte cuadrado
+centrado en la cara, pensado para un marco circular.
 
 Uso: python3 scripts/editar-retrato.py <foto-original>
 Salida: site/assets/gabriela-920.webp y -560.webp
@@ -188,17 +189,13 @@ def main():
     final = np.clip(img, 0, 255).astype(np.uint8)
     os.makedirs(DESTINO, exist_ok=True)
 
-    # Encuadre vertical 4:5 centrado en la cara, con aire arriba
+    # Encuadre cuadrado centrado en la cara, con aire arriba — para el marco circular
     fx, fy, fw, fh = cara
     cx = fx + fw // 2
-    alto = h
-    ancho = int(alto * 0.8)
-    if ancho > w:
-        ancho = w
-        alto = int(ancho / 0.8)
-    x0 = int(np.clip(cx - ancho // 2, 0, w - ancho))
-    y0 = int(np.clip(fy - fh * 0.75, 0, h - alto))
-    recorte = final[y0:y0 + alto, x0:x0 + ancho]
+    lado = min(h, int(fw * 3.35))
+    x0 = int(np.clip(cx - lado // 2, 0, w - lado))
+    y0 = int(np.clip(fy - fh * 0.55, 0, h - lado))
+    recorte = final[y0:y0 + lado, x0:x0 + lado]
 
     for ancho_sal in ANCHOS:
         esc = ancho_sal / recorte.shape[1]
