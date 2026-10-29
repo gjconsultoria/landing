@@ -1,7 +1,6 @@
 """Preedición del retrato de «Sobre mí».
-Busca el acabado de una cámara profesional: separación del fondo con
-desenfoque suave, piel suavizada sin perder los rasgos, y un revelado de
-contraste, color y viñeta discretos.
+Suaviza la textura de la piel sin tocar los rasgos y revela contraste y
+color. El fondo de la foto se respeta: no se desenfoca ni se recorta.
 
 Uso: python3 scripts/editar-retrato.py <foto-original>
 Salida: site/assets/gabriela-920.webp y -560.webp
@@ -168,26 +167,23 @@ def main():
         raise SystemExit("no pude abrir " + origen)
     h, w = bgr.shape[:2]
 
-    sujeto, cara = mascara_sujeto(bgr)
+    cara = buscar_cara(bgr)
+    if cara is None:
+        cara = (int(w * .37), int(h * .16), int(w * .26), int(w * .26))
 
-    # Fondo: desenfoque progresivo, como una apertura abierta
-    fondo = cv2.GaussianBlur(bgr, (0, 0), w * 0.011)
-    fondo = cv2.GaussianBlur(fondo, (0, 0), w * 0.006)
-    m = sujeto[..., None]
-    img = fondo.astype(np.float32) * (1 - m) + bgr.astype(np.float32) * m
+    # El fondo se deja como está: la foto conserva su escena.
+    img = bgr.astype(np.float32)
 
-    # Piel
+    # Piel: se suaviza la textura sin tocar ojos, cejas ni boca
     piel = mascara_piel(bgr, cara)
     img = suavizar_piel(np.clip(img, 0, 255).astype(np.uint8), piel)
 
-    # Revelado y viñeta
+    # Revelado
     img = revelar(img)
-    img = vineta(img, 0.22)
 
-    # Nitidez solo sobre el sujeto (los rasgos, no el fondo)
-    base = cv2.GaussianBlur(img, (0, 0), 1.6)
-    nitido = np.clip(img + (img - base) * 0.55, 0, 255)
-    img = img * (1 - m) + nitido * m
+    # Nitidez general, suave
+    base = cv2.GaussianBlur(img, (0, 0), 1.5)
+    img = np.clip(img + (img - base) * 0.42, 0, 255)
 
     final = np.clip(img, 0, 255).astype(np.uint8)
     os.makedirs(DESTINO, exist_ok=True)
@@ -211,8 +207,6 @@ def main():
         cv2.imwrite(ruta, chico, [cv2.IMWRITE_WEBP_QUALITY, 86])
         print(f"{os.path.basename(ruta)}  {chico.shape[1]}x{chico.shape[0]}  {os.path.getsize(ruta)//1024} KB")
 
-    cv2.imwrite("/tmp/claude-0/-home-claude/e25420f1-890b-596a-bb6c-070532ca213a/scratchpad/retrato-mascara.jpg",
-                (sujeto * 255).astype(np.uint8))
     print("cara detectada en", cara)
 
 

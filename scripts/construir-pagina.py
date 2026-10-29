@@ -382,9 +382,6 @@ def construir():
   <div class="envoltura">
     <div class="sobre__rejilla">
       <figure class="retrato revela">
-        <span class="retrato__aura anim-respira" aria-hidden="true"></span>
-        <svg class="trazo trazo--garabato" aria-hidden="true" focusable="false"><use href="#g-garabato"/></svg>
-        <svg class="trazo trazo--asterisco" aria-hidden="true" focusable="false"><use href="#g-asterisco"/></svg>
         <span class="retrato__marco">
           <img src="/assets/gabriela-920.webp" srcset="/assets/gabriela-560.webp 560w, /assets/gabriela-920.webp 920w" sizes="(max-width: 860px) 62vw, 330px" width="920" height="1150" alt="Gabriela Jiménez en campo" loading="lazy" decoding="async">
         </span>
@@ -402,11 +399,8 @@ def construir():
 
     <div class="territorios revela" data-territorios>
       <p class="territorios__linea">Territorios que he recorrido</p>
-      <div class="territorios__pista">
-        <svg class="territorios__hilo" aria-hidden="true" focusable="false"></svg>
-        <div class="territorios__fotos">
+      <div class="territorios__fotos">
 {territorios_html()}
-        </div>
       </div>
     </div>
   </div>
