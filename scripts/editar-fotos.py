@@ -27,8 +27,26 @@ AJUSTES = {
     "ama-casa-rio":      (0.5, 0.08, 1.20, 1.12, 0.01),
     "ama-orilla-bote":   (0.2, 0.24, 1.14, 1.04, 0.03),
     "ama-escuela":       (0.5, 0.08, 1.18, 1.10, 0.00),
+    "ama-chiguiro-pollitos": (0.3, 0.22, 1.20, 1.08, 0.02),
+    "ama-perro-canoa":       (0.2, 0.34, 1.12, 1.06, 0.04),
 }
 POR_DEFECTO = (0.4, 0.10, 1.18, 1.10, 0.00)
+
+# Encuadre por foto: (izq, arriba, der, abajo) como fracción 0-1 del original.
+# Se recorta antes de editar, para llevar cada foto a una composición más
+# cerrada en vez de dejar que el navegador decida qué recorta.
+ENCUADRE = {
+    "ama-chiguiro-pollitos": (0.02, 0.03, 0.86, 1.00),
+    "ama-perro-canoa":       (0.00, 0.08, 1.00, 0.56),
+}
+
+
+def recortar(img, caja):
+    if not caja:
+        return img
+    w, h = img.size
+    l, t, r, b = caja
+    return img.crop((round(l * w), round(t * h), round(r * w), round(b * h)))
 
 
 def niveles(img, recorte):
@@ -92,6 +110,7 @@ def main():
     for ruta in sorted(glob.glob(os.path.join(ORIGEN, "*.webp"))):
         nombre = os.path.splitext(os.path.basename(ruta))[0]
         img = Image.open(ruta).convert("RGB")
+        img = recortar(img, ENCUADRE.get(nombre))
         img = editar(img, AJUSTES.get(nombre, POR_DEFECTO))
         # El tamaño manda sobre el lado largo: así una foto vertical no
         # termina pesando el triple que una horizontal.
