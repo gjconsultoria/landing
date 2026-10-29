@@ -91,6 +91,15 @@ TALLERES = {
     },
 }
 
+
+TERRITORIOS = [
+    ("gua-mavecure-rio", "Guainía", "Cerros de piedra sobre el río, en el Guainía"),
+    ("ama-raices-ceiba", "Amazonas", "Raíces de un árbol gigante con personas caminando sobre ellas"),
+    ("ama-victoria", "Amazonas", "Victorias regias abiertas sobre el agua"),
+    ("gua-espejo-rio", "Guainía", "El río como un espejo que refleja las nubes"),
+    ("ama-escuela", "Amazonas", "Escuela rural de madera en una comunidad"),
+]
+
 CIFRAS = [
     ("3", "años liderando comunicación estratégica"),
     ("25+", "planes de comunicación, del diagnóstico a los resultados"),
@@ -153,6 +162,19 @@ def talleres_html():
           </ul>
         </div>''')
     return "\n      ".join(pestanas), "\n".join(paneles)
+
+
+def territorios_html():
+    out = []
+    for i, (n, lugar, alt) in enumerate(TERRITORIOS):
+        srcset = f"/assets/fotos/{n}-600.webp 600w, /assets/fotos/{n}-900.webp 900w"
+        out.append(f'''          <figure class="territorio" style="--i:{i}">
+            <span class="territorio__marco">
+              <img src="/assets/fotos/{n}-600.webp" srcset="{srcset}" sizes="(max-width: 760px) 62vw, 17vw" alt="{alt}" loading="lazy" decoding="async">
+            </span>
+            <figcaption class="territorio__lugar">{lugar}</figcaption>
+          </figure>''')
+    return "\n".join(out)
 
 
 def cifras_html():
@@ -359,12 +381,14 @@ def construir():
 <section class="seccion sobre" id="sobre-mi" aria-labelledby="sobre-titulo">
   <div class="envoltura">
     <div class="sobre__rejilla">
-      <div class="sobre__aura revela" aria-hidden="true">
-        <span class="aura-logo anim-respira"></span>
+      <figure class="retrato revela">
+        <span class="retrato__aura anim-respira" aria-hidden="true"></span>
         <svg class="trazo trazo--garabato" aria-hidden="true" focusable="false"><use href="#g-garabato"/></svg>
         <svg class="trazo trazo--asterisco" aria-hidden="true" focusable="false"><use href="#g-asterisco"/></svg>
-        <svg class="trazo trazo--zigzag" aria-hidden="true" focusable="false"><use href="#g-zigzag"/></svg>
-      </div>
+        <span class="retrato__marco">
+          <img src="/assets/gabriela-920.webp" srcset="/assets/gabriela-560.webp 560w, /assets/gabriela-920.webp 920w" sizes="(max-width: 860px) 62vw, 330px" width="920" height="1150" alt="Gabriela Jiménez en campo" loading="lazy" decoding="async">
+        </span>
+      </figure>
       <div class="sobre__texto revela">
         <p class="seccion__eco" aria-hidden="true">Sobre mí</p>
         <h2 id="sobre-titulo" class="titulo-2">Soy Gabriela Jiménez</h2>
@@ -375,6 +399,16 @@ def construir():
     <ul class="cifras revela" aria-label="Experiencia en cifras">
 {cifras_html()}
     </ul>
+
+    <div class="territorios revela" data-territorios>
+      <p class="territorios__linea">Territorios que he recorrido</p>
+      <div class="territorios__pista">
+        <svg class="territorios__hilo" aria-hidden="true" focusable="false"></svg>
+        <div class="territorios__fotos">
+{territorios_html()}
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
