@@ -1,59 +1,65 @@
-"""Arma site/index.html a partir de la plantilla y el sprite de hojas.
+"""Arma site/index.html.
+La página se apoya en la gráfica secundaria de la consultoría: el aura del
+logo, los degradados, las hojas vectoriales y los trazos a mano. La idea que
+la ordena es la CONEXIÓN: una red viva en la portada, un hilo que enlaza
+todas las secciones y tarjetas que reaccionan al cursor.
+
 Uso: python3 scripts/construir-pagina.py
 """
-import os, random
+import os
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SPRITE = "/tmp/claude-0/-home-claude/e25420f1-890b-596a-bb6c-070532ca213a/scratchpad/sprite.html"
+SPRITE = os.path.join(RAIZ, "scripts", "_sprite-hojas.html")
 
 AGENDA = "https://calendar.app.google/MA7J7cr6MwokBeuJ8"
 WA = "https://wa.me/573237160686?text="
 CORREO = "gabrielajimenez.consultoria@gmail.com"
 SITIO = "https://gabrielajimenez-consultoria.pages.dev/"
-VER = "20261028b"
-
-HOJAS = ["hoja-lanza", "hoja-ancha", "hoja-palma", "hoja-helecho", "hoja-monstera"]
-DEGRADADOS = ["g-selva", "g-brote", "g-luz", "g-agua", "g-sombra"]
+VER = "20261028c"
 
 
-def hoja(x, y, w, rot, capa=2, forma=None, deg=None, ar="3/5", semilla=0):
-    """Una hoja decorativa colocada en porcentajes del contenedor."""
-    r = random.Random(semilla)
-    forma = forma or r.choice(HOJAS)
-    deg = deg or r.choice(DEGRADADOS[:4])
+def hoja(x, y, w, rot, capa=2, forma="hoja-palma", deg="g-selva", ar="3/5"):
     return (f'<div class="hoja hoja--c{capa}" style="--x:{x};--y:{y};--w:{w};--rot:{rot}deg;'
             f'--ar:{ar};--r:url(#{deg})"><div class="hoja__giro">'
             f'<svg class="hoja__svg"><use href="#{forma}" width="100%" height="100%"/></svg>'
             f'</div></div>')
 
 
-def foto(nombre, alt, sizes, clase="", lazy=True, anchos=(600, 900, 1400)):
-    srcset = ", ".join(f"/assets/fotos/{nombre}-{a}.webp {a}w" for a in anchos)
-    carga = 'loading="lazy" decoding="async"' if lazy else 'decoding="async" fetchpriority="high"'
-    cl = f' class="{clase}"' if clase else ""
-    return (f'<img{cl} src="/assets/fotos/{nombre}-900.webp" srcset="{srcset}" sizes="{sizes}" '
-            f'alt="{alt}" {carga}>')
+def conector(indice):
+    """Hilo que une una sección con la siguiente. Se dibuja al bajar."""
+    # Todas las curvas pasan por el punto medio (50, 78): así el nodo cae
+    # siempre sobre la línea y el hilo teje de un lado al otro al bajar.
+    izq = "M22 0 C22 38 50 46 50 78 C50 110 78 120 78 156"
+    der = "M78 0 C78 38 50 46 50 78 C50 110 22 120 22 156"
+    d = izq if indice % 2 == 0 else der
+    return f'''<div class="conector" aria-hidden="true" data-conector>
+  <svg viewBox="0 0 100 156" preserveAspectRatio="none" focusable="false">
+    <path class="conector__linea" d="{d}" vector-effect="non-scaling-stroke"/>
+    <path class="conector__luz" d="{d}" vector-effect="non-scaling-stroke"/>
+  </svg>
+  <span class="conector__nodo"></span>
+</div>'''
 
 
 SERVICIOS = [
-    ("Diagnóstico y estrategia",
+    ("01", "Diagnóstico y estrategia",
      "Reviso cómo comunicas hoy y definimos un plan claro y medible.",
-     "g-selva", "Diagn%C3%B3stico%20y%20estrategia"),
-    ("Marca y posicionamiento",
+     "Diagn%C3%B3stico%20y%20estrategia"),
+    ("02", "Marca y posicionamiento",
      "Qué te distingue y cómo explicarlo con coherencia en todos tus canales.",
-     "g-agua", "Marca%20y%20posicionamiento"),
-    ("Narrativa y contenidos",
+     "Marca%20y%20posicionamiento"),
+    ("03", "Narrativa y contenidos",
      "Las historias y los textos que muestran el valor de tu trabajo.",
-     "g-brote", "Narrativa%20y%20contenidos"),
-    ("Video para redes",
+     "Narrativa%20y%20contenidos"),
+    ("04", "Video para redes",
      "Edito el material que tú grabas y lo dejo listo para publicar.",
-     "g-luz", "Video%20para%20redes"),
-    ("Proyectos y resultados",
+     "Video%20para%20redes"),
+    ("05", "Proyectos y resultados",
      "Avances, memoria e informes para públicos, aliados y financiadores.",
-     "g-agua", "Proyectos%20y%20resultados"),
-    ("Soluciones digitales e IA",
+     "Proyectos%20y%20resultados"),
+    ("06", "Soluciones digitales e IA",
      "Página web, tableros y flujos sencillos cuando el plan los necesita.",
-     "g-selva", "Soluciones%20digitales"),
+     "Soluciones%20digitales%20e%20IA"),
 ]
 
 PASOS = [
@@ -62,6 +68,29 @@ PASOS = [
     ("Ejecutamos", "Por proyecto puntual o con acompañamiento mensual."),
 ]
 
+TALLERES = {
+    "contar": {
+        "titulo": "Contar para crecer",
+        "para": "Emprendimientos, operadores turísticos y asociaciones que quieren mostrar lo que hacen con lo que ya tienen a mano.",
+        "modulos": [
+            ("Tu historia en tres frases", "Qué haces, para quién y qué te hace distinto.", "Tu presentación lista para publicar"),
+            ("Fotos y video con el celular", "Luz, planos, sonido y grabar con respeto.", "Diez fotos o clips propios"),
+            ("Edita un video en 20 minutos", "Plantilla de 30 segundos en CapCut gratuito.", "Tu primer video terminado"),
+            ("Publica sin agotarte", "Un ritmo realista y tres números que importan.", "Tu calendario de cuatro semanas"),
+        ],
+    },
+    "estrategia": {
+        "titulo": "Estrategia en una página",
+        "para": "Organizaciones, fundaciones y equipos de proyecto que necesitan ordenar su comunicación y mostrar resultados.",
+        "modulos": [
+            ("Diagnóstico exprés", "Qué funciona, qué sobra y a quién hablarle primero.", "Tu diagnóstico en una página"),
+            ("Mensajes que se entienden", "Un mensaje central y tres por público.", "Tu ficha de mensajes clave"),
+            ("Plan de 90 días", "Tres objetivos, seis acciones y responsables.", "Tu plan en hoja editable"),
+            ("Muestra tus resultados", "Cinco indicadores y un informe de una página.", "Tu plantilla de informe"),
+        ],
+    },
+}
+
 CIFRAS = [
     ("3", "años liderando comunicación estratégica"),
     ("25+", "planes de comunicación, del diagnóstico a los resultados"),
@@ -69,24 +98,19 @@ CIFRAS = [
     ("+202%", "de crecimiento de comunidad en redes"),
 ]
 
-CARRIL = [
-    ("gua-mavecure-rio", "Cerros de piedra sobre el río, en el Guainía", ""),
-    ("ama-raices-ceiba", "Raíces de un árbol gigante con personas caminando sobre ellas", ""),
-    ("ama-victoria", "Victorias regias abiertas sobre el agua", ""),
-    ("ama-casa-rio", "Casa flotante sobre el río", ""),
-    ("ama-escuela", "Escuela rural de madera en una comunidad", ""),
-    ("gua-espejo-rio", "El río como un espejo que refleja las nubes", ""),
-]
-
 
 def servicios_html():
     out = []
-    for i, (titulo, texto, deg, asunto) in enumerate(SERVICIOS):
-        out.append(f'''        <li class="servicio reflejo" style="--acento: var(--c{i % 4 + 1})">
-          <span class="servicio__marca" aria-hidden="true"></span>
-          <h3 class="servicio__titulo">{titulo}</h3>
-          <p class="servicio__texto">{texto}</p>
-          <a class="servicio__enlace" href="{WA}Hola%20Gabriela%2C%20me%20interesa%3A%20{asunto}" target="_blank" rel="noopener" data-evento="whatsapp-servicio">Consultar<span aria-hidden="true">→</span></a>
+    for i, (num, titulo, texto, asunto) in enumerate(SERVICIOS):
+        out.append(f'''        <li class="tarjeta tarjeta--servicio" data-tilt style="--i:{i}">
+          <span class="tarjeta__borde" aria-hidden="true"></span>
+          <span class="tarjeta__brillo" aria-hidden="true"></span>
+          <div class="tarjeta__cuerpo">
+            <span class="tarjeta__numero" aria-hidden="true">{num}</span>
+            <h3 class="tarjeta__titulo">{titulo}</h3>
+            <p class="tarjeta__texto">{texto}</p>
+            <a class="tarjeta__enlace" href="{WA}Hola%20Gabriela%2C%20me%20interesa%3A%20{asunto}" target="_blank" rel="noopener" data-evento="whatsapp-servicio">Consultar<span aria-hidden="true">→</span></a>
+          </div>
         </li>''')
     return "\n".join(out)
 
@@ -94,44 +118,64 @@ def servicios_html():
 def pasos_html():
     out = []
     for i, (titulo, texto) in enumerate(PASOS, 1):
-        out.append(f'''        <li class="paso">
-          <span class="paso__numero" aria-hidden="true">{i}</span>
+        out.append(f'''        <li class="paso" style="--i:{i}">
+          <span class="paso__nodo" aria-hidden="true"></span>
+          <span class="paso__numero" aria-hidden="true">0{i}</span>
           <h3 class="paso__titulo">{titulo}</h3>
           <p class="paso__texto">{texto}</p>
         </li>''')
     return "\n".join(out)
 
 
+def talleres_html():
+    pestanas, paneles = [], []
+    for k, (clave, t) in enumerate(TALLERES.items()):
+        sel = "true" if k == 0 else "false"
+        tab = "" if k == 0 else ' tabindex="-1"'
+        pestanas.append(
+            f'<button type="button" class="ruta" role="tab" id="tab-{clave}" '
+            f'aria-controls="panel-{clave}" aria-selected="{sel}"{tab} data-ruta="{clave}">'
+            f'<span class="ruta__punto" aria-hidden="true"></span>{t["titulo"]}</button>')
+        mods = "\n".join(
+            f'''            <li class="modulo" style="--i:{j}">
+              <span class="modulo__num" aria-hidden="true">{j + 1}</span>
+              <div>
+                <h4 class="modulo__titulo">{m[0]}</h4>
+                <p class="modulo__texto">{m[1]}</p>
+                <p class="modulo__llevas"><span aria-hidden="true">→</span> {m[2]}</p>
+              </div>
+            </li>''' for j, m in enumerate(t["modulos"]))
+        oculto = "" if k == 0 else " hidden"
+        paneles.append(f'''        <div class="panel" id="panel-{clave}" role="tabpanel" aria-labelledby="tab-{clave}" data-panel="{clave}"{oculto}>
+          <p class="panel__para">{t["para"]}</p>
+          <ul class="modulos">
+{mods}
+          </ul>
+        </div>''')
+    return "\n      ".join(pestanas), "\n".join(paneles)
+
+
 def cifras_html():
-    out = []
-    for i, (valor, texto) in enumerate(CIFRAS):
-        out.append(f'''          <li class="cifra"><span class="cifra__valor">{valor}</span><span class="cifra__texto">{texto}</span></li>''')
-    return "\n".join(out)
-
-
-def carril_html():
-    out = []
-    for i, (n, alt, extra) in enumerate(CARRIL):
-        rot = [-1.4, 1.2, -0.9, 1.5, -1.2, 0.9][i]
-        lado = -1 if i % 2 == 0 else 1
-        out.append(f'''        <figure class="ventana{extra}" style="--rot:{rot}deg;--lado:{lado}">{foto(n, alt, "(max-width: 760px) 74vw, 30vw")}</figure>''')
-    return "\n".join(out)
+    return "\n".join(
+        f'''          <li class="cifra" style="--i:{i}"><span class="cifra__valor">{v}</span><span class="cifra__texto">{t}</span></li>'''
+        for i, (v, t) in enumerate(CIFRAS))
 
 
 def construir():
     sprite = open(SPRITE, encoding="utf-8").read()
+    pestanas, paneles = talleres_html()
 
     hero_hojas = "\n".join([
-        hoja(-3, 24, 14, 38, capa=1, forma="hoja-palma", deg="g-selva", semilla=1),
-        hoja(103, 18, 15, -42, capa=1, forma="hoja-helecho", deg="g-brote", semilla=2),
-        hoja(-2, 86, 12, -24, capa=2, forma="hoja-ancha", deg="g-luz", ar="10/11", semilla=3),
-        hoja(101, 88, 13, 28, capa=2, forma="hoja-monstera", deg="g-agua", ar="10/11", semilla=4),
+        hoja(-4, 22, 15, 40, capa=1, forma="hoja-palma", deg="g-selva"),
+        hoja(104, 16, 16, -44, capa=1, forma="hoja-helecho", deg="g-brote"),
+        hoja(-3, 88, 12, -22, capa=2, forma="hoja-ancha", deg="g-luz", ar="10/11"),
+        hoja(102, 90, 13, 26, capa=2, forma="hoja-monstera", deg="g-agua", ar="10/11"),
     ])
     cierre_hojas = "\n".join([
-        hoja(-2, 104, 16, 26, capa=3, forma="hoja-monstera", deg="g-sombra", ar="10/11", semilla=5),
-        hoja(14, 108, 12, 12, capa=2, forma="hoja-palma", deg="g-sombra", semilla=6),
-        hoja(102, 106, 17, -28, capa=3, forma="hoja-palma", deg="g-sombra", semilla=7),
-        hoja(86, 109, 10, -18, capa=2, forma="hoja-lanza", deg="g-sombra", ar="1/2", semilla=8),
+        hoja(-3, 104, 17, 26, capa=3, forma="hoja-monstera", deg="g-sombra", ar="10/11"),
+        hoja(13, 109, 12, 12, capa=2, forma="hoja-palma", deg="g-sombra"),
+        hoja(103, 106, 18, -28, capa=3, forma="hoja-palma", deg="g-sombra"),
+        hoja(85, 110, 10, -18, capa=2, forma="hoja-lanza", deg="g-sombra", ar="1/2"),
     ])
 
     html = f'''<!doctype html>
@@ -140,7 +184,7 @@ def construir():
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Comunicación estratégica para organizaciones de Colombia | Gabriela Jiménez</title>
-<meta name="description" content="Consultoría de comunicación para pequeñas empresas, organizaciones, fundaciones y cooperativas de los territorios de Colombia. Diagnóstico, estrategia, narrativa, video y comunicación de proyectos. Primera conversación gratuita de 30 minutos.">
+<meta name="description" content="Consultoría de comunicación para pequeñas empresas, organizaciones, fundaciones y cooperativas de los territorios de Colombia. Diagnóstico, estrategia, narrativa, video, proyectos y talleres prácticos. Primera conversación gratuita de 30 minutos.">
 <link rel="canonical" href="{SITIO}">
 <meta name="theme-color" content="#F4F6F3">
 <meta name="robots" content="index, follow">
@@ -159,7 +203,7 @@ def construir():
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&amp;display=swap">
 <link rel="stylesheet" href="/assets/styles.css?v={VER}">
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D3C7HSLH9T"></script>
@@ -189,7 +233,8 @@ def construir():
       {{ "@type": "Offer", "itemOffered": {{ "@type": "Service", "name": "Narrativa y contenidos" }} }},
       {{ "@type": "Offer", "itemOffered": {{ "@type": "Service", "name": "Edición de video para redes" }} }},
       {{ "@type": "Offer", "itemOffered": {{ "@type": "Service", "name": "Comunicación de proyectos y resultados" }} }},
-      {{ "@type": "Offer", "itemOffered": {{ "@type": "Service", "name": "Soluciones digitales e inteligencia artificial" }} }}
+      {{ "@type": "Offer", "itemOffered": {{ "@type": "Service", "name": "Soluciones digitales e inteligencia artificial" }} }},
+      {{ "@type": "Offer", "itemOffered": {{ "@type": "Service", "name": "Talleres prácticos de comunicación" }} }}
     ]
   }}
 }}
@@ -211,106 +256,136 @@ def construir():
       <ul class="nav__enlaces">
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#proceso">Cómo trabajo</a></li>
+        <li><a href="#talleres">Talleres</a></li>
         <li><a href="#sobre-mi">Sobre mí</a></li>
       </ul>
+      <span class="nav__marcador" aria-hidden="true"></span>
     </nav>
-    <a class="btn btn--oscuro btn--chico" href="{AGENDA}" target="_blank" rel="noopener" data-agenda data-evento="agenda-cabecera">Hablemos</a>
+    <a class="btn btn--oscuro btn--chico iman" href="{AGENDA}" target="_blank" rel="noopener" data-agenda data-evento="agenda-cabecera" data-iman>Hablemos</a>
   </div>
 </header>
 
 <main id="contenido">
 
-<!-- 1. PORTADA -->
+<!-- 1. PORTADA: la red viva -->
 <section class="hero" aria-labelledby="hero-titulo">
   <div class="hero__fondo" aria-hidden="true">
-    <div class="hero__aura"></div>
-    <div class="capa capa--hojas" style="--fx:-26; --fy:-14">
+    <div class="malla" data-malla>
+      <span class="malla__mancha malla__mancha--1"></span>
+      <span class="malla__mancha malla__mancha--2"></span>
+      <span class="malla__mancha malla__mancha--3"></span>
+    </div>
+    <canvas class="red" data-red></canvas>
+    <div class="capa capa--hojas" style="--fx:-22; --fy:-12">
 {hero_hojas}
     </div>
-    <canvas class="polen" data-polen></canvas>
+    <div class="hero__aura anim-respira"></div>
   </div>
 
-  <div class="envoltura hero__rejilla">
-    <div class="hero__texto">
-      <p class="etiqueta entra entra--1"><span class="etiqueta__pin" aria-hidden="true"></span>Colombia · remoto y en territorio</p>
-      <h1 id="hero-titulo" class="titulo-1 entra entra--2">Comunicación que hace visible tu trabajo</h1>
-      <p class="hero__bajada entra entra--3">Acompaño a pequeñas empresas, organizaciones, fundaciones y cooperativas de los territorios de Colombia.</p>
-      <div class="hero__acciones entra entra--4">
-        <a class="btn btn--oscuro" href="{AGENDA}" target="_blank" rel="noopener" data-agenda data-evento="agenda-hero">Agendar 30 minutos gratis</a>
-        <a class="btn btn--borde" href="#servicios">Ver servicios</a>
-      </div>
+  <div class="envoltura hero__contenido">
+    <p class="etiqueta entra entra--1"><span class="etiqueta__pin" aria-hidden="true"></span>Colombia · remoto y en territorio</p>
+    <h1 id="hero-titulo" class="titulo-1 entra entra--2">Comunicación que <em>conecta</em> tu trabajo con las personas adecuadas</h1>
+    <p class="hero__bajada entra entra--3">Acompaño a pequeñas empresas, organizaciones, fundaciones y cooperativas de los territorios de Colombia.</p>
+    <div class="hero__acciones entra entra--4">
+      <a class="btn btn--oscuro iman" href="{AGENDA}" target="_blank" rel="noopener" data-agenda data-evento="agenda-hero" data-iman>Agendar 30 minutos gratis</a>
+      <a class="btn btn--borde iman" href="#servicios" data-iman>Ver servicios</a>
     </div>
-
-    <div class="hero__fotos entra entra--4" data-fotos-hero>
-      <figure class="ventana ventana--uno" style="--rot:-3deg;--lado:-1">{foto("gua-mavecure-rio", "Cerros de piedra sobre el río, en el Guainía", "(max-width: 640px) 31vw, (max-width: 860px) 60vw, 30vw", lazy=False, anchos=(600, 900, 1400))}</figure>
-      <figure class="ventana ventana--dos" style="--rot:4deg;--lado:1">{foto("ama-raices-ceiba", "Raíces de un árbol gigante en el Amazonas", "(max-width: 640px) 31vw, (max-width: 860px) 40vw, 20vw", lazy=False, anchos=(600, 900))}</figure>
-      <figure class="ventana ventana--tres" style="--rot:-2deg;--lado:-1">{foto("ama-victoria", "Victorias regias abiertas sobre el agua", "(max-width: 640px) 31vw, (max-width: 860px) 36vw, 18vw", anchos=(600, 900))}</figure>
-    </div>
+    <p class="hero__pie entra entra--4" aria-hidden="true">Mueve el cursor: así se ve una red que conecta</p>
   </div>
 </section>
+
+{conector(0)}
 
 <!-- 2. SERVICIOS -->
 <section class="seccion servicios" id="servicios" aria-labelledby="servicios-titulo">
   <div class="envoltura">
-    <div class="seccion__cabeza">
+    <div class="seccion__cabeza revela">
+      <p class="seccion__eco" aria-hidden="true">Servicios</p>
       <h2 id="servicios-titulo" class="titulo-2">En qué puedo ayudarte</h2>
       <p class="seccion__bajada">El alcance lo definimos juntos en la primera conversación.</p>
     </div>
-    <ul class="servicios__rejilla">
+    <ul class="rejilla-conectada revela" data-rejilla>
 {servicios_html()}
     </ul>
   </div>
 </section>
 
+{conector(1)}
+
 <!-- 3. CÓMO TRABAJO -->
 <section class="seccion proceso" id="proceso" aria-labelledby="proceso-titulo">
   <div class="envoltura">
-    <div class="seccion__cabeza">
+    <div class="seccion__cabeza revela">
+      <p class="seccion__eco" aria-hidden="true">Proceso</p>
       <h2 id="proceso-titulo" class="titulo-2">Cómo trabajo</h2>
       <p class="seccion__bajada">Tres pasos, sin vueltas.</p>
     </div>
-    <ol class="pasos">
+    <div class="proceso__hilo revela" data-proceso>
+      <span class="proceso__linea" aria-hidden="true"></span>
+      <ol class="pasos">
 {pasos_html()}
-    </ol>
+      </ol>
+    </div>
   </div>
 </section>
 
-<!-- 4. SOBRE MÍ Y TERRITORIO -->
+{conector(2)}
+
+<!-- 4. TALLERES -->
+<section class="seccion talleres" id="talleres" aria-labelledby="talleres-titulo">
+  <div class="envoltura">
+    <div class="seccion__cabeza revela">
+      <p class="seccion__eco" aria-hidden="true">Talleres</p>
+      <h2 id="talleres-titulo" class="titulo-2">Aprende y termina con algo hecho</h2>
+      <p class="seccion__bajada">Talleres virtuales. Cada módulo dura 2 horas y termina con un entregable. Elige 2 módulos, o los 4 con 10&nbsp;% de descuento.</p>
+    </div>
+
+    <div class="rutas revela">
+      <div class="rutas__pestanas" role="tablist" aria-label="Rutas de taller">
+      {pestanas}
+      </div>
+{paneles}
+      <div class="rutas__pie">
+        <p>Incluye plantillas editables y una sesión de seguimiento gratuita de 30 minutos.</p>
+        <a class="btn btn--borde btn--chico iman" href="{WA}Hola%20Gabriela%2C%20quiero%20informaci%C3%B3n%20de%20los%20talleres." target="_blank" rel="noopener" data-evento="whatsapp-talleres" data-iman>Consultar talleres</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{conector(3)}
+
+<!-- 5. SOBRE MÍ -->
 <section class="seccion sobre" id="sobre-mi" aria-labelledby="sobre-titulo">
   <div class="envoltura">
     <div class="sobre__rejilla">
-      <figure class="retrato">
-        <span class="retrato__aura anim-respira" aria-hidden="true"></span>
-        <div class="retrato__arco">
-          <img src="/assets/gabriela-760.webp" srcset="/assets/gabriela-480.webp 480w, /assets/gabriela-760.webp 760w" sizes="(max-width: 860px) 54vw, 320px" width="760" height="950" alt="Gabriela Jiménez" loading="lazy" decoding="async">
-        </div>
-      </figure>
-      <div class="sobre__texto">
+      <div class="sobre__aura revela" aria-hidden="true">
+        <span class="aura-logo anim-respira"></span>
+        <svg class="trazo trazo--garabato" aria-hidden="true" focusable="false"><use href="#g-garabato"/></svg>
+        <svg class="trazo trazo--asterisco" aria-hidden="true" focusable="false"><use href="#g-asterisco"/></svg>
+        <svg class="trazo trazo--zigzag" aria-hidden="true" focusable="false"><use href="#g-zigzag"/></svg>
+      </div>
+      <div class="sobre__texto revela">
+        <p class="seccion__eco" aria-hidden="true">Sobre mí</p>
         <h2 id="sobre-titulo" class="titulo-2">Soy Gabriela Jiménez</h2>
         <p class="parrafo-destacado">Comunicadora corporativa. He liderado la comunicación de proyectos de innovación, cooperación internacional, cultura y desarrollo rural.</p>
         <p>Trabajo escuchando primero: entiendo el contexto y construyo con cada organización, no por encima de ella.</p>
-        <ul class="cifras" aria-label="Experiencia en cifras">
+      </div>
+    </div>
+    <ul class="cifras revela" aria-label="Experiencia en cifras">
 {cifras_html()}
-        </ul>
-      </div>
-    </div>
-
-    <div class="territorio">
-      <p class="territorio__linea">He recorrido territorios del país, del Amazonas al Guainía, documentando el trabajo de quienes los habitan.</p>
-      <div class="carril" data-carril>
-{carril_html()}
-      </div>
-    </div>
+    </ul>
   </div>
 </section>
 
-<!-- 5. CONTACTO -->
+{conector(4)}
+
+<!-- 6. CONTACTO -->
 <section class="seccion cierre" id="contacto" aria-labelledby="cierre-titulo">
   <div class="cierre__fondo" aria-hidden="true">
-    <div class="cierre__foto" data-franja>{foto("ama-orilla-bote", "", "100vw", anchos=(900, 1400))}</div>
+    <canvas class="red red--noche" data-red="noche"></canvas>
     <div class="cierre__aura"><span class="aura-logo anim-respira"></span></div>
-    <canvas class="polen polen--noche" data-polen="noche"></canvas>
-    <div class="capa capa--hojas" style="--fx:-24; --fy:-12">
+    <div class="capa capa--hojas" style="--fx:-20; --fy:-10">
 {cierre_hojas}
     </div>
   </div>
@@ -318,15 +393,15 @@ def construir():
     <h2 id="cierre-titulo" class="titulo-1">Hablemos 30 minutos</h2>
     <p class="cierre__bajada">Sin costo. Revisamos tu necesidad y te digo si puedo ayudarte.</p>
     <div class="cierre__opciones">
-      <a class="opcion opcion--principal" href="{AGENDA}" target="_blank" rel="noopener" data-agenda data-evento="agenda-cierre">
+      <a class="opcion opcion--principal iman" href="{AGENDA}" target="_blank" rel="noopener" data-agenda data-evento="agenda-cierre" data-iman>
         <span class="opcion__titulo">Agendar videollamada</span>
         <span class="opcion__accion" data-agenda-accion>Ver horarios</span>
       </a>
-      <a class="opcion" href="{WA}Hola%20Gabriela%2C%20quiero%20conversar%20sobre%20la%20comunicaci%C3%B3n%20de%20mi%20organizaci%C3%B3n." target="_blank" rel="noopener" data-evento="whatsapp-cierre">
+      <a class="opcion iman" href="{WA}Hola%20Gabriela%2C%20quiero%20conversar%20sobre%20la%20comunicaci%C3%B3n%20de%20mi%20organizaci%C3%B3n." target="_blank" rel="noopener" data-evento="whatsapp-cierre" data-iman>
         <span class="opcion__titulo">Escribir por WhatsApp</span>
         <span class="opcion__accion">Abrir WhatsApp</span>
       </a>
-      <a class="opcion" href="mailto:{CORREO}?subject=Conversaci%C3%B3n%20sobre%20comunicaci%C3%B3n" data-evento="correo-cierre">
+      <a class="opcion iman" href="mailto:{CORREO}?subject=Conversaci%C3%B3n%20sobre%20comunicaci%C3%B3n" data-evento="correo-cierre" data-iman>
         <span class="opcion__titulo">Enviar un correo</span>
         <span class="opcion__accion">{CORREO}</span>
       </a>
@@ -345,7 +420,7 @@ def construir():
   </div>
 </footer>
 
-<div class="barra-movil" aria-hidden="false">
+<div class="barra-movil">
   <a class="btn btn--borde btn--chico" href="{WA}Hola%20Gabriela%2C%20quiero%20conversar%20sobre%20la%20comunicaci%C3%B3n%20de%20mi%20organizaci%C3%B3n." target="_blank" rel="noopener" data-evento="whatsapp-barra">WhatsApp</a>
   <a class="btn btn--oscuro btn--chico" href="{AGENDA}" target="_blank" rel="noopener" data-agenda data-evento="agenda-barra">Agendar gratis</a>
 </div>

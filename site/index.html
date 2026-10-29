@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Comunicación estratégica para organizaciones de Colombia | Gabriela Jiménez</title>
-<meta name="description" content="Consultoría de comunicación para pequeñas empresas, organizaciones, fundaciones y cooperativas de los territorios de Colombia. Diagnóstico, estrategia, narrativa, video y comunicación de proyectos. Primera conversación gratuita de 30 minutos.">
+<meta name="description" content="Consultoría de comunicación para pequeñas empresas, organizaciones, fundaciones y cooperativas de los territorios de Colombia. Diagnóstico, estrategia, narrativa, video, proyectos y talleres prácticos. Primera conversación gratuita de 30 minutos.">
 <link rel="canonical" href="https://gabrielajimenez-consultoria.pages.dev/">
 <meta name="theme-color" content="#F4F6F3">
 <meta name="robots" content="index, follow">
@@ -23,11 +23,11 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&amp;display=swap">
-<link rel="stylesheet" href="/assets/styles.css?v=20261028b">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&amp;display=swap">
+<link rel="stylesheet" href="/assets/styles.css?v=20261028c">
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D3C7HSLH9T"></script>
-<script src="/assets/main.js?v=20261028b" defer></script>
+<script src="/assets/main.js?v=20261028c" defer></script>
 <!-- Cloudflare Web Analytics (sin cookies, sin datos personales) -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "8e3493f7ea244f278128128fefcb5674"}'></script>
 <script type="application/ld+json">
@@ -53,7 +53,8 @@
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Narrativa y contenidos" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Edición de video para redes" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Comunicación de proyectos y resultados" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Soluciones digitales e inteligencia artificial" } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Soluciones digitales e inteligencia artificial" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Talleres prácticos de comunicación" } }
     ]
   }
 }
@@ -80,185 +81,341 @@
       <ul class="nav__enlaces">
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#proceso">Cómo trabajo</a></li>
+        <li><a href="#talleres">Talleres</a></li>
         <li><a href="#sobre-mi">Sobre mí</a></li>
       </ul>
+      <span class="nav__marcador" aria-hidden="true"></span>
     </nav>
-    <a class="btn btn--oscuro btn--chico" href="https://calendar.app.google/MA7J7cr6MwokBeuJ8" target="_blank" rel="noopener" data-agenda data-evento="agenda-cabecera">Hablemos</a>
+    <a class="btn btn--oscuro btn--chico iman" href="https://calendar.app.google/MA7J7cr6MwokBeuJ8" target="_blank" rel="noopener" data-agenda data-evento="agenda-cabecera" data-iman>Hablemos</a>
   </div>
 </header>
 
 <main id="contenido">
 
-<!-- 1. PORTADA -->
+<!-- 1. PORTADA: la red viva -->
 <section class="hero" aria-labelledby="hero-titulo">
   <div class="hero__fondo" aria-hidden="true">
-    <div class="hero__aura"></div>
-    <div class="capa capa--hojas" style="--fx:-26; --fy:-14">
-<div class="hoja hoja--c1" style="--x:-3;--y:24;--w:14;--rot:38deg;--ar:3/5;--r:url(#g-selva)"><div class="hoja__giro"><svg class="hoja__svg"><use href="#hoja-palma" width="100%" height="100%"/></svg></div></div>
-<div class="hoja hoja--c1" style="--x:103;--y:18;--w:15;--rot:-42deg;--ar:3/5;--r:url(#g-brote)"><div class="hoja__giro"><svg class="hoja__svg"><use href="#hoja-helecho" width="100%" height="100%"/></svg></div></div>
-<div class="hoja hoja--c2" style="--x:-2;--y:86;--w:12;--rot:-24deg;--ar:10/11;--r:url(#g-luz)"><div class="hoja__giro"><svg class="hoja__svg"><use href="#hoja-ancha" width="100%" height="100%"/></svg></div></div>
-<div class="hoja hoja--c2" style="--x:101;--y:88;--w:13;--rot:28deg;--ar:10/11;--r:url(#g-agua)"><div class="hoja__giro"><svg class="hoja__svg"><use href="#hoja-monstera" width="100%" height="100%"/></svg></div></div>
+    <div class="malla" data-malla>
+      <span class="malla__mancha malla__mancha--1"></span>
+      <span class="malla__mancha malla__mancha--2"></span>
+      <span class="malla__mancha malla__mancha--3"></span>
     </div>
-    <canvas class="polen" data-polen></canvas>
+    <canvas class="red" data-red></canvas>
+    <div class="capa capa--hojas" style="--fx:-22; --fy:-12">
+<div class="hoja hoja--c1" style="--x:-4;--y:22;--w:15;--rot:40deg;--ar:3/5;--r:url(#g-selva)"><div class="hoja__giro"><svg class="hoja__svg"><use href="#hoja-palma" width="100%" height="100%"/></svg></div></div>
+<div class="hoja hoja--c1" style="--x:104;--y:16;--w:16;--rot:-44deg;--ar:3/5;--r:url(#g-brote)"><div class="hoja__giro"><svg class="hoja__svg"><use href="#hoja-helecho" width="100%" height="100%"/></svg></div></div>
+<div class="hoja hoja--c2" style="--x:-3;--y:88;--w:12;--rot:-22deg;--ar:10/11;--r:url(#g-luz)"><div class="hoja__giro"><svg class="hoja__svg"><use href="#hoja-ancha" width="100%" height="100%"/></svg></div></div>
+<div class="hoja hoja--c2" style="--x:102;--y:90;--w:13;--rot:26deg;--ar:10/11;--r:url(#g-agua)"><div class="hoja__giro"><svg class="hoja__svg"><use href="#hoja-monstera" width="100%" height="100%"/></svg></div></div>
+    </div>
+    <div class="hero__aura anim-respira"></div>
   </div>
 
-  <div class="envoltura hero__rejilla">
-    <div class="hero__texto">
-      <p class="etiqueta entra entra--1"><span class="etiqueta__pin" aria-hidden="true"></span>Colombia · remoto y en territorio</p>
-      <h1 id="hero-titulo" class="titulo-1 entra entra--2">Comunicación que hace visible tu trabajo</h1>
-      <p class="hero__bajada entra entra--3">Acompaño a pequeñas empresas, organizaciones, fundaciones y cooperativas de los territorios de Colombia.</p>
-      <div class="hero__acciones entra entra--4">
-        <a class="btn btn--oscuro" href="https://calendar.app.google/MA7J7cr6MwokBeuJ8" target="_blank" rel="noopener" data-agenda data-evento="agenda-hero">Agendar 30 minutos gratis</a>
-        <a class="btn btn--borde" href="#servicios">Ver servicios</a>
-      </div>
+  <div class="envoltura hero__contenido">
+    <p class="etiqueta entra entra--1"><span class="etiqueta__pin" aria-hidden="true"></span>Colombia · remoto y en territorio</p>
+    <h1 id="hero-titulo" class="titulo-1 entra entra--2">Comunicación que <em>conecta</em> tu trabajo con las personas adecuadas</h1>
+    <p class="hero__bajada entra entra--3">Acompaño a pequeñas empresas, organizaciones, fundaciones y cooperativas de los territorios de Colombia.</p>
+    <div class="hero__acciones entra entra--4">
+      <a class="btn btn--oscuro iman" href="https://calendar.app.google/MA7J7cr6MwokBeuJ8" target="_blank" rel="noopener" data-agenda data-evento="agenda-hero" data-iman>Agendar 30 minutos gratis</a>
+      <a class="btn btn--borde iman" href="#servicios" data-iman>Ver servicios</a>
     </div>
-
-    <div class="hero__fotos entra entra--4" data-fotos-hero>
-      <figure class="ventana ventana--uno" style="--rot:-3deg;--lado:-1"><img src="/assets/fotos/gua-mavecure-rio-900.webp" srcset="/assets/fotos/gua-mavecure-rio-600.webp 600w, /assets/fotos/gua-mavecure-rio-900.webp 900w, /assets/fotos/gua-mavecure-rio-1400.webp 1400w" sizes="(max-width: 640px) 31vw, (max-width: 860px) 60vw, 30vw" alt="Cerros de piedra sobre el río, en el Guainía" decoding="async" fetchpriority="high"></figure>
-      <figure class="ventana ventana--dos" style="--rot:4deg;--lado:1"><img src="/assets/fotos/ama-raices-ceiba-900.webp" srcset="/assets/fotos/ama-raices-ceiba-600.webp 600w, /assets/fotos/ama-raices-ceiba-900.webp 900w" sizes="(max-width: 640px) 31vw, (max-width: 860px) 40vw, 20vw" alt="Raíces de un árbol gigante en el Amazonas" decoding="async" fetchpriority="high"></figure>
-      <figure class="ventana ventana--tres" style="--rot:-2deg;--lado:-1"><img src="/assets/fotos/ama-victoria-900.webp" srcset="/assets/fotos/ama-victoria-600.webp 600w, /assets/fotos/ama-victoria-900.webp 900w" sizes="(max-width: 640px) 31vw, (max-width: 860px) 36vw, 18vw" alt="Victorias regias abiertas sobre el agua" loading="lazy" decoding="async"></figure>
-    </div>
+    <p class="hero__pie entra entra--4" aria-hidden="true">Mueve el cursor: así se ve una red que conecta</p>
   </div>
 </section>
+
+<div class="conector" aria-hidden="true" data-conector>
+  <svg viewBox="0 0 100 156" preserveAspectRatio="none" focusable="false">
+    <path class="conector__linea" d="M22 0 C22 38 50 46 50 78 C50 110 78 120 78 156" vector-effect="non-scaling-stroke"/>
+    <path class="conector__luz" d="M22 0 C22 38 50 46 50 78 C50 110 78 120 78 156" vector-effect="non-scaling-stroke"/>
+  </svg>
+  <span class="conector__nodo"></span>
+</div>
 
 <!-- 2. SERVICIOS -->
 <section class="seccion servicios" id="servicios" aria-labelledby="servicios-titulo">
   <div class="envoltura">
-    <div class="seccion__cabeza">
+    <div class="seccion__cabeza revela">
+      <p class="seccion__eco" aria-hidden="true">Servicios</p>
       <h2 id="servicios-titulo" class="titulo-2">En qué puedo ayudarte</h2>
       <p class="seccion__bajada">El alcance lo definimos juntos en la primera conversación.</p>
     </div>
-    <ul class="servicios__rejilla">
-        <li class="servicio reflejo" style="--acento: var(--c1)">
-          <span class="servicio__marca" aria-hidden="true"></span>
-          <h3 class="servicio__titulo">Diagnóstico y estrategia</h3>
-          <p class="servicio__texto">Reviso cómo comunicas hoy y definimos un plan claro y medible.</p>
-          <a class="servicio__enlace" href="https://wa.me/573237160686?text=Hola%20Gabriela%2C%20me%20interesa%3A%20Diagn%C3%B3stico%20y%20estrategia" target="_blank" rel="noopener" data-evento="whatsapp-servicio">Consultar<span aria-hidden="true">→</span></a>
+    <ul class="rejilla-conectada revela" data-rejilla>
+        <li class="tarjeta tarjeta--servicio" data-tilt style="--i:0">
+          <span class="tarjeta__borde" aria-hidden="true"></span>
+          <span class="tarjeta__brillo" aria-hidden="true"></span>
+          <div class="tarjeta__cuerpo">
+            <span class="tarjeta__numero" aria-hidden="true">01</span>
+            <h3 class="tarjeta__titulo">Diagnóstico y estrategia</h3>
+            <p class="tarjeta__texto">Reviso cómo comunicas hoy y definimos un plan claro y medible.</p>
+            <a class="tarjeta__enlace" href="https://wa.me/573237160686?text=Hola%20Gabriela%2C%20me%20interesa%3A%20Diagn%C3%B3stico%20y%20estrategia" target="_blank" rel="noopener" data-evento="whatsapp-servicio">Consultar<span aria-hidden="true">→</span></a>
+          </div>
         </li>
-        <li class="servicio reflejo" style="--acento: var(--c2)">
-          <span class="servicio__marca" aria-hidden="true"></span>
-          <h3 class="servicio__titulo">Marca y posicionamiento</h3>
-          <p class="servicio__texto">Qué te distingue y cómo explicarlo con coherencia en todos tus canales.</p>
-          <a class="servicio__enlace" href="https://wa.me/573237160686?text=Hola%20Gabriela%2C%20me%20interesa%3A%20Marca%20y%20posicionamiento" target="_blank" rel="noopener" data-evento="whatsapp-servicio">Consultar<span aria-hidden="true">→</span></a>
+        <li class="tarjeta tarjeta--servicio" data-tilt style="--i:1">
+          <span class="tarjeta__borde" aria-hidden="true"></span>
+          <span class="tarjeta__brillo" aria-hidden="true"></span>
+          <div class="tarjeta__cuerpo">
+            <span class="tarjeta__numero" aria-hidden="true">02</span>
+            <h3 class="tarjeta__titulo">Marca y posicionamiento</h3>
+            <p class="tarjeta__texto">Qué te distingue y cómo explicarlo con coherencia en todos tus canales.</p>
+            <a class="tarjeta__enlace" href="https://wa.me/573237160686?text=Hola%20Gabriela%2C%20me%20interesa%3A%20Marca%20y%20posicionamiento" target="_blank" rel="noopener" data-evento="whatsapp-servicio">Consultar<span aria-hidden="true">→</span></a>
+          </div>
         </li>
-        <li class="servicio reflejo" style="--acento: var(--c3)">
-          <span class="servicio__marca" aria-hidden="true"></span>
-          <h3 class="servicio__titulo">Narrativa y contenidos</h3>
-          <p class="servicio__texto">Las historias y los textos que muestran el valor de tu trabajo.</p>
-          <a class="servicio__enlace" href="https://wa.me/573237160686?text=Hola%20Gabriela%2C%20me%20interesa%3A%20Narrativa%20y%20contenidos" target="_blank" rel="noopener" data-evento="whatsapp-servicio">Consultar<span aria-hidden="true">→</span></a>
+        <li class="tarjeta tarjeta--servicio" data-tilt style="--i:2">
+          <span class="tarjeta__borde" aria-hidden="true"></span>
+          <span class="tarjeta__brillo" aria-hidden="true"></span>
+          <div class="tarjeta__cuerpo">
+            <span class="tarjeta__numero" aria-hidden="true">03</span>
+            <h3 class="tarjeta__titulo">Narrativa y contenidos</h3>
+            <p class="tarjeta__texto">Las historias y los textos que muestran el valor de tu trabajo.</p>
+            <a class="tarjeta__enlace" href="https://wa.me/573237160686?text=Hola%20Gabriela%2C%20me%20interesa%3A%20Narrativa%20y%20contenidos" target="_blank" rel="noopener" data-evento="whatsapp-servicio">Consultar<span aria-hidden="true">→</span></a>
+          </div>
         </li>
-        <li class="servicio reflejo" style="--acento: var(--c4)">
-          <span class="servicio__marca" aria-hidden="true"></span>
-          <h3 class="servicio__titulo">Video para redes</h3>
-          <p class="servicio__texto">Edito el material que tú grabas y lo dejo listo para publicar.</p>
-          <a class="servicio__enlace" href="https://wa.me/573237160686?text=Hola%20Gabriela%2C%20me%20interesa%3A%20Video%20para%20redes" target="_blank" rel="noopener" data-evento="whatsapp-servicio">Consultar<span aria-hidden="true">→</span></a>
+        <li class="tarjeta tarjeta--servicio" data-tilt style="--i:3">
+          <span class="tarjeta__borde" aria-hidden="true"></span>
+          <span class="tarjeta__brillo" aria-hidden="true"></span>
+          <div class="tarjeta__cuerpo">
+            <span class="tarjeta__numero" aria-hidden="true">04</span>
+            <h3 class="tarjeta__titulo">Video para redes</h3>
+            <p class="tarjeta__texto">Edito el material que tú grabas y lo dejo listo para publicar.</p>
+            <a class="tarjeta__enlace" href="https://wa.me/573237160686?text=Hola%20Gabriela%2C%20me%20interesa%3A%20Video%20para%20redes" target="_blank" rel="noopener" data-evento="whatsapp-servicio">Consultar<span aria-hidden="true">→</span></a>
+          </div>
         </li>
-        <li class="servicio reflejo" style="--acento: var(--c1)">
-          <span class="servicio__marca" aria-hidden="true"></span>
-          <h3 class="servicio__titulo">Proyectos y resultados</h3>
-          <p class="servicio__texto">Avances, memoria e informes para públicos, aliados y financiadores.</p>
-          <a class="servicio__enlace" href="https://wa.me/573237160686?text=Hola%20Gabriela%2C%20me%20interesa%3A%20Proyectos%20y%20resultados" target="_blank" rel="noopener" data-evento="whatsapp-servicio">Consultar<span aria-hidden="true">→</span></a>
+        <li class="tarjeta tarjeta--servicio" data-tilt style="--i:4">
+          <span class="tarjeta__borde" aria-hidden="true"></span>
+          <span class="tarjeta__brillo" aria-hidden="true"></span>
+          <div class="tarjeta__cuerpo">
+            <span class="tarjeta__numero" aria-hidden="true">05</span>
+            <h3 class="tarjeta__titulo">Proyectos y resultados</h3>
+            <p class="tarjeta__texto">Avances, memoria e informes para públicos, aliados y financiadores.</p>
+            <a class="tarjeta__enlace" href="https://wa.me/573237160686?text=Hola%20Gabriela%2C%20me%20interesa%3A%20Proyectos%20y%20resultados" target="_blank" rel="noopener" data-evento="whatsapp-servicio">Consultar<span aria-hidden="true">→</span></a>
+          </div>
         </li>
-        <li class="servicio reflejo" style="--acento: var(--c2)">
-          <span class="servicio__marca" aria-hidden="true"></span>
-          <h3 class="servicio__titulo">Soluciones digitales e IA</h3>
-          <p class="servicio__texto">Página web, tableros y flujos sencillos cuando el plan los necesita.</p>
-          <a class="servicio__enlace" href="https://wa.me/573237160686?text=Hola%20Gabriela%2C%20me%20interesa%3A%20Soluciones%20digitales" target="_blank" rel="noopener" data-evento="whatsapp-servicio">Consultar<span aria-hidden="true">→</span></a>
+        <li class="tarjeta tarjeta--servicio" data-tilt style="--i:5">
+          <span class="tarjeta__borde" aria-hidden="true"></span>
+          <span class="tarjeta__brillo" aria-hidden="true"></span>
+          <div class="tarjeta__cuerpo">
+            <span class="tarjeta__numero" aria-hidden="true">06</span>
+            <h3 class="tarjeta__titulo">Soluciones digitales e IA</h3>
+            <p class="tarjeta__texto">Página web, tableros y flujos sencillos cuando el plan los necesita.</p>
+            <a class="tarjeta__enlace" href="https://wa.me/573237160686?text=Hola%20Gabriela%2C%20me%20interesa%3A%20Soluciones%20digitales%20e%20IA" target="_blank" rel="noopener" data-evento="whatsapp-servicio">Consultar<span aria-hidden="true">→</span></a>
+          </div>
         </li>
     </ul>
   </div>
 </section>
 
+<div class="conector" aria-hidden="true" data-conector>
+  <svg viewBox="0 0 100 156" preserveAspectRatio="none" focusable="false">
+    <path class="conector__linea" d="M78 0 C78 38 50 46 50 78 C50 110 22 120 22 156" vector-effect="non-scaling-stroke"/>
+    <path class="conector__luz" d="M78 0 C78 38 50 46 50 78 C50 110 22 120 22 156" vector-effect="non-scaling-stroke"/>
+  </svg>
+  <span class="conector__nodo"></span>
+</div>
+
 <!-- 3. CÓMO TRABAJO -->
 <section class="seccion proceso" id="proceso" aria-labelledby="proceso-titulo">
   <div class="envoltura">
-    <div class="seccion__cabeza">
+    <div class="seccion__cabeza revela">
+      <p class="seccion__eco" aria-hidden="true">Proceso</p>
       <h2 id="proceso-titulo" class="titulo-2">Cómo trabajo</h2>
       <p class="seccion__bajada">Tres pasos, sin vueltas.</p>
     </div>
-    <ol class="pasos">
-        <li class="paso">
-          <span class="paso__numero" aria-hidden="true">1</span>
+    <div class="proceso__hilo revela" data-proceso>
+      <span class="proceso__linea" aria-hidden="true"></span>
+      <ol class="pasos">
+        <li class="paso" style="--i:1">
+          <span class="paso__nodo" aria-hidden="true"></span>
+          <span class="paso__numero" aria-hidden="true">01</span>
           <h3 class="paso__titulo">Conversamos</h3>
           <p class="paso__texto">30 minutos gratis para entender tu reto.</p>
         </li>
-        <li class="paso">
-          <span class="paso__numero" aria-hidden="true">2</span>
+        <li class="paso" style="--i:2">
+          <span class="paso__nodo" aria-hidden="true"></span>
+          <span class="paso__numero" aria-hidden="true">02</span>
           <h3 class="paso__titulo">Diagnóstico y propuesta</h3>
           <p class="paso__texto">Alcance, entregables, tiempos y honorarios por escrito.</p>
         </li>
-        <li class="paso">
-          <span class="paso__numero" aria-hidden="true">3</span>
+        <li class="paso" style="--i:3">
+          <span class="paso__nodo" aria-hidden="true"></span>
+          <span class="paso__numero" aria-hidden="true">03</span>
           <h3 class="paso__titulo">Ejecutamos</h3>
           <p class="paso__texto">Por proyecto puntual o con acompañamiento mensual.</p>
         </li>
-    </ol>
+      </ol>
+    </div>
   </div>
 </section>
 
-<!-- 4. SOBRE MÍ Y TERRITORIO -->
+<div class="conector" aria-hidden="true" data-conector>
+  <svg viewBox="0 0 100 156" preserveAspectRatio="none" focusable="false">
+    <path class="conector__linea" d="M22 0 C22 38 50 46 50 78 C50 110 78 120 78 156" vector-effect="non-scaling-stroke"/>
+    <path class="conector__luz" d="M22 0 C22 38 50 46 50 78 C50 110 78 120 78 156" vector-effect="non-scaling-stroke"/>
+  </svg>
+  <span class="conector__nodo"></span>
+</div>
+
+<!-- 4. TALLERES -->
+<section class="seccion talleres" id="talleres" aria-labelledby="talleres-titulo">
+  <div class="envoltura">
+    <div class="seccion__cabeza revela">
+      <p class="seccion__eco" aria-hidden="true">Talleres</p>
+      <h2 id="talleres-titulo" class="titulo-2">Aprende y termina con algo hecho</h2>
+      <p class="seccion__bajada">Talleres virtuales. Cada módulo dura 2 horas y termina con un entregable. Elige 2 módulos, o los 4 con 10&nbsp;% de descuento.</p>
+    </div>
+
+    <div class="rutas revela">
+      <div class="rutas__pestanas" role="tablist" aria-label="Rutas de taller">
+      <button type="button" class="ruta" role="tab" id="tab-contar" aria-controls="panel-contar" aria-selected="true" data-ruta="contar"><span class="ruta__punto" aria-hidden="true"></span>Contar para crecer</button>
+      <button type="button" class="ruta" role="tab" id="tab-estrategia" aria-controls="panel-estrategia" aria-selected="false" tabindex="-1" data-ruta="estrategia"><span class="ruta__punto" aria-hidden="true"></span>Estrategia en una página</button>
+      </div>
+        <div class="panel" id="panel-contar" role="tabpanel" aria-labelledby="tab-contar" data-panel="contar">
+          <p class="panel__para">Emprendimientos, operadores turísticos y asociaciones que quieren mostrar lo que hacen con lo que ya tienen a mano.</p>
+          <ul class="modulos">
+            <li class="modulo" style="--i:0">
+              <span class="modulo__num" aria-hidden="true">1</span>
+              <div>
+                <h4 class="modulo__titulo">Tu historia en tres frases</h4>
+                <p class="modulo__texto">Qué haces, para quién y qué te hace distinto.</p>
+                <p class="modulo__llevas"><span aria-hidden="true">→</span> Tu presentación lista para publicar</p>
+              </div>
+            </li>
+            <li class="modulo" style="--i:1">
+              <span class="modulo__num" aria-hidden="true">2</span>
+              <div>
+                <h4 class="modulo__titulo">Fotos y video con el celular</h4>
+                <p class="modulo__texto">Luz, planos, sonido y grabar con respeto.</p>
+                <p class="modulo__llevas"><span aria-hidden="true">→</span> Diez fotos o clips propios</p>
+              </div>
+            </li>
+            <li class="modulo" style="--i:2">
+              <span class="modulo__num" aria-hidden="true">3</span>
+              <div>
+                <h4 class="modulo__titulo">Edita un video en 20 minutos</h4>
+                <p class="modulo__texto">Plantilla de 30 segundos en CapCut gratuito.</p>
+                <p class="modulo__llevas"><span aria-hidden="true">→</span> Tu primer video terminado</p>
+              </div>
+            </li>
+            <li class="modulo" style="--i:3">
+              <span class="modulo__num" aria-hidden="true">4</span>
+              <div>
+                <h4 class="modulo__titulo">Publica sin agotarte</h4>
+                <p class="modulo__texto">Un ritmo realista y tres números que importan.</p>
+                <p class="modulo__llevas"><span aria-hidden="true">→</span> Tu calendario de cuatro semanas</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="panel" id="panel-estrategia" role="tabpanel" aria-labelledby="tab-estrategia" data-panel="estrategia" hidden>
+          <p class="panel__para">Organizaciones, fundaciones y equipos de proyecto que necesitan ordenar su comunicación y mostrar resultados.</p>
+          <ul class="modulos">
+            <li class="modulo" style="--i:0">
+              <span class="modulo__num" aria-hidden="true">1</span>
+              <div>
+                <h4 class="modulo__titulo">Diagnóstico exprés</h4>
+                <p class="modulo__texto">Qué funciona, qué sobra y a quién hablarle primero.</p>
+                <p class="modulo__llevas"><span aria-hidden="true">→</span> Tu diagnóstico en una página</p>
+              </div>
+            </li>
+            <li class="modulo" style="--i:1">
+              <span class="modulo__num" aria-hidden="true">2</span>
+              <div>
+                <h4 class="modulo__titulo">Mensajes que se entienden</h4>
+                <p class="modulo__texto">Un mensaje central y tres por público.</p>
+                <p class="modulo__llevas"><span aria-hidden="true">→</span> Tu ficha de mensajes clave</p>
+              </div>
+            </li>
+            <li class="modulo" style="--i:2">
+              <span class="modulo__num" aria-hidden="true">3</span>
+              <div>
+                <h4 class="modulo__titulo">Plan de 90 días</h4>
+                <p class="modulo__texto">Tres objetivos, seis acciones y responsables.</p>
+                <p class="modulo__llevas"><span aria-hidden="true">→</span> Tu plan en hoja editable</p>
+              </div>
+            </li>
+            <li class="modulo" style="--i:3">
+              <span class="modulo__num" aria-hidden="true">4</span>
+              <div>
+                <h4 class="modulo__titulo">Muestra tus resultados</h4>
+                <p class="modulo__texto">Cinco indicadores y un informe de una página.</p>
+                <p class="modulo__llevas"><span aria-hidden="true">→</span> Tu plantilla de informe</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      <div class="rutas__pie">
+        <p>Incluye plantillas editables y una sesión de seguimiento gratuita de 30 minutos.</p>
+        <a class="btn btn--borde btn--chico iman" href="https://wa.me/573237160686?text=Hola%20Gabriela%2C%20quiero%20informaci%C3%B3n%20de%20los%20talleres." target="_blank" rel="noopener" data-evento="whatsapp-talleres" data-iman>Consultar talleres</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="conector" aria-hidden="true" data-conector>
+  <svg viewBox="0 0 100 156" preserveAspectRatio="none" focusable="false">
+    <path class="conector__linea" d="M78 0 C78 38 50 46 50 78 C50 110 22 120 22 156" vector-effect="non-scaling-stroke"/>
+    <path class="conector__luz" d="M78 0 C78 38 50 46 50 78 C50 110 22 120 22 156" vector-effect="non-scaling-stroke"/>
+  </svg>
+  <span class="conector__nodo"></span>
+</div>
+
+<!-- 5. SOBRE MÍ -->
 <section class="seccion sobre" id="sobre-mi" aria-labelledby="sobre-titulo">
   <div class="envoltura">
     <div class="sobre__rejilla">
-      <figure class="retrato">
-        <span class="retrato__aura anim-respira" aria-hidden="true"></span>
-        <div class="retrato__arco">
-          <img src="/assets/gabriela-760.webp" srcset="/assets/gabriela-480.webp 480w, /assets/gabriela-760.webp 760w" sizes="(max-width: 860px) 54vw, 320px" width="760" height="950" alt="Gabriela Jiménez" loading="lazy" decoding="async">
-        </div>
-      </figure>
-      <div class="sobre__texto">
+      <div class="sobre__aura revela" aria-hidden="true">
+        <span class="aura-logo anim-respira"></span>
+        <svg class="trazo trazo--garabato" aria-hidden="true" focusable="false"><use href="#g-garabato"/></svg>
+        <svg class="trazo trazo--asterisco" aria-hidden="true" focusable="false"><use href="#g-asterisco"/></svg>
+        <svg class="trazo trazo--zigzag" aria-hidden="true" focusable="false"><use href="#g-zigzag"/></svg>
+      </div>
+      <div class="sobre__texto revela">
+        <p class="seccion__eco" aria-hidden="true">Sobre mí</p>
         <h2 id="sobre-titulo" class="titulo-2">Soy Gabriela Jiménez</h2>
         <p class="parrafo-destacado">Comunicadora corporativa. He liderado la comunicación de proyectos de innovación, cooperación internacional, cultura y desarrollo rural.</p>
         <p>Trabajo escuchando primero: entiendo el contexto y construyo con cada organización, no por encima de ella.</p>
-        <ul class="cifras" aria-label="Experiencia en cifras">
-          <li class="cifra"><span class="cifra__valor">3</span><span class="cifra__texto">años liderando comunicación estratégica</span></li>
-          <li class="cifra"><span class="cifra__valor">25+</span><span class="cifra__texto">planes de comunicación, del diagnóstico a los resultados</span></li>
-          <li class="cifra"><span class="cifra__valor">47.000+</span><span class="cifra__texto">reproducciones de pódcast y documentales que lideré</span></li>
-          <li class="cifra"><span class="cifra__valor">+202%</span><span class="cifra__texto">de crecimiento de comunidad en redes</span></li>
-        </ul>
       </div>
     </div>
-
-    <div class="territorio">
-      <p class="territorio__linea">He recorrido territorios del país, del Amazonas al Guainía, documentando el trabajo de quienes los habitan.</p>
-      <div class="carril" data-carril>
-        <figure class="ventana" style="--rot:-1.4deg;--lado:-1"><img src="/assets/fotos/gua-mavecure-rio-900.webp" srcset="/assets/fotos/gua-mavecure-rio-600.webp 600w, /assets/fotos/gua-mavecure-rio-900.webp 900w, /assets/fotos/gua-mavecure-rio-1400.webp 1400w" sizes="(max-width: 760px) 74vw, 30vw" alt="Cerros de piedra sobre el río, en el Guainía" loading="lazy" decoding="async"></figure>
-        <figure class="ventana" style="--rot:1.2deg;--lado:1"><img src="/assets/fotos/ama-raices-ceiba-900.webp" srcset="/assets/fotos/ama-raices-ceiba-600.webp 600w, /assets/fotos/ama-raices-ceiba-900.webp 900w, /assets/fotos/ama-raices-ceiba-1400.webp 1400w" sizes="(max-width: 760px) 74vw, 30vw" alt="Raíces de un árbol gigante con personas caminando sobre ellas" loading="lazy" decoding="async"></figure>
-        <figure class="ventana" style="--rot:-0.9deg;--lado:-1"><img src="/assets/fotos/ama-victoria-900.webp" srcset="/assets/fotos/ama-victoria-600.webp 600w, /assets/fotos/ama-victoria-900.webp 900w, /assets/fotos/ama-victoria-1400.webp 1400w" sizes="(max-width: 760px) 74vw, 30vw" alt="Victorias regias abiertas sobre el agua" loading="lazy" decoding="async"></figure>
-        <figure class="ventana" style="--rot:1.5deg;--lado:1"><img src="/assets/fotos/ama-casa-rio-900.webp" srcset="/assets/fotos/ama-casa-rio-600.webp 600w, /assets/fotos/ama-casa-rio-900.webp 900w, /assets/fotos/ama-casa-rio-1400.webp 1400w" sizes="(max-width: 760px) 74vw, 30vw" alt="Casa flotante sobre el río" loading="lazy" decoding="async"></figure>
-        <figure class="ventana" style="--rot:-1.2deg;--lado:-1"><img src="/assets/fotos/ama-escuela-900.webp" srcset="/assets/fotos/ama-escuela-600.webp 600w, /assets/fotos/ama-escuela-900.webp 900w, /assets/fotos/ama-escuela-1400.webp 1400w" sizes="(max-width: 760px) 74vw, 30vw" alt="Escuela rural de madera en una comunidad" loading="lazy" decoding="async"></figure>
-        <figure class="ventana" style="--rot:0.9deg;--lado:1"><img src="/assets/fotos/gua-espejo-rio-900.webp" srcset="/assets/fotos/gua-espejo-rio-600.webp 600w, /assets/fotos/gua-espejo-rio-900.webp 900w, /assets/fotos/gua-espejo-rio-1400.webp 1400w" sizes="(max-width: 760px) 74vw, 30vw" alt="El río como un espejo que refleja las nubes" loading="lazy" decoding="async"></figure>
-      </div>
-    </div>
+    <ul class="cifras revela" aria-label="Experiencia en cifras">
+          <li class="cifra" style="--i:0"><span class="cifra__valor">3</span><span class="cifra__texto">años liderando comunicación estratégica</span></li>
+          <li class="cifra" style="--i:1"><span class="cifra__valor">25+</span><span class="cifra__texto">planes de comunicación, del diagnóstico a los resultados</span></li>
+          <li class="cifra" style="--i:2"><span class="cifra__valor">47.000+</span><span class="cifra__texto">reproducciones de pódcast y documentales que lideré</span></li>
+          <li class="cifra" style="--i:3"><span class="cifra__valor">+202%</span><span class="cifra__texto">de crecimiento de comunidad en redes</span></li>
+    </ul>
   </div>
 </section>
 
-<!-- 5. CONTACTO -->
+<div class="conector" aria-hidden="true" data-conector>
+  <svg viewBox="0 0 100 156" preserveAspectRatio="none" focusable="false">
+    <path class="conector__linea" d="M22 0 C22 38 50 46 50 78 C50 110 78 120 78 156" vector-effect="non-scaling-stroke"/>
+    <path class="conector__luz" d="M22 0 C22 38 50 46 50 78 C50 110 78 120 78 156" vector-effect="non-scaling-stroke"/>
+  </svg>
+  <span class="conector__nodo"></span>
+</div>
+
+<!-- 6. CONTACTO -->
 <section class="seccion cierre" id="contacto" aria-labelledby="cierre-titulo">
   <div class="cierre__fondo" aria-hidden="true">
-    <div class="cierre__foto" data-franja><img src="/assets/fotos/ama-orilla-bote-900.webp" srcset="/assets/fotos/ama-orilla-bote-900.webp 900w, /assets/fotos/ama-orilla-bote-1400.webp 1400w" sizes="100vw" alt="" loading="lazy" decoding="async"></div>
+    <canvas class="red red--noche" data-red="noche"></canvas>
     <div class="cierre__aura"><span class="aura-logo anim-respira"></span></div>
-    <canvas class="polen polen--noche" data-polen="noche"></canvas>
-    <div class="capa capa--hojas" style="--fx:-24; --fy:-12">
-<div class="hoja hoja--c3" style="--x:-2;--y:104;--w:16;--rot:26deg;--ar:10/11;--r:url(#g-sombra)"><div class="hoja__giro"><svg class="hoja__svg"><use href="#hoja-monstera" width="100%" height="100%"/></svg></div></div>
-<div class="hoja hoja--c2" style="--x:14;--y:108;--w:12;--rot:12deg;--ar:3/5;--r:url(#g-sombra)"><div class="hoja__giro"><svg class="hoja__svg"><use href="#hoja-palma" width="100%" height="100%"/></svg></div></div>
-<div class="hoja hoja--c3" style="--x:102;--y:106;--w:17;--rot:-28deg;--ar:3/5;--r:url(#g-sombra)"><div class="hoja__giro"><svg class="hoja__svg"><use href="#hoja-palma" width="100%" height="100%"/></svg></div></div>
-<div class="hoja hoja--c2" style="--x:86;--y:109;--w:10;--rot:-18deg;--ar:1/2;--r:url(#g-sombra)"><div class="hoja__giro"><svg class="hoja__svg"><use href="#hoja-lanza" width="100%" height="100%"/></svg></div></div>
+    <div class="capa capa--hojas" style="--fx:-20; --fy:-10">
+<div class="hoja hoja--c3" style="--x:-3;--y:104;--w:17;--rot:26deg;--ar:10/11;--r:url(#g-sombra)"><div class="hoja__giro"><svg class="hoja__svg"><use href="#hoja-monstera" width="100%" height="100%"/></svg></div></div>
+<div class="hoja hoja--c2" style="--x:13;--y:109;--w:12;--rot:12deg;--ar:3/5;--r:url(#g-sombra)"><div class="hoja__giro"><svg class="hoja__svg"><use href="#hoja-palma" width="100%" height="100%"/></svg></div></div>
+<div class="hoja hoja--c3" style="--x:103;--y:106;--w:18;--rot:-28deg;--ar:3/5;--r:url(#g-sombra)"><div class="hoja__giro"><svg class="hoja__svg"><use href="#hoja-palma" width="100%" height="100%"/></svg></div></div>
+<div class="hoja hoja--c2" style="--x:85;--y:110;--w:10;--rot:-18deg;--ar:1/2;--r:url(#g-sombra)"><div class="hoja__giro"><svg class="hoja__svg"><use href="#hoja-lanza" width="100%" height="100%"/></svg></div></div>
     </div>
   </div>
   <div class="envoltura cierre__contenido">
     <h2 id="cierre-titulo" class="titulo-1">Hablemos 30 minutos</h2>
     <p class="cierre__bajada">Sin costo. Revisamos tu necesidad y te digo si puedo ayudarte.</p>
     <div class="cierre__opciones">
-      <a class="opcion opcion--principal" href="https://calendar.app.google/MA7J7cr6MwokBeuJ8" target="_blank" rel="noopener" data-agenda data-evento="agenda-cierre">
+      <a class="opcion opcion--principal iman" href="https://calendar.app.google/MA7J7cr6MwokBeuJ8" target="_blank" rel="noopener" data-agenda data-evento="agenda-cierre" data-iman>
         <span class="opcion__titulo">Agendar videollamada</span>
         <span class="opcion__accion" data-agenda-accion>Ver horarios</span>
       </a>
-      <a class="opcion" href="https://wa.me/573237160686?text=Hola%20Gabriela%2C%20quiero%20conversar%20sobre%20la%20comunicaci%C3%B3n%20de%20mi%20organizaci%C3%B3n." target="_blank" rel="noopener" data-evento="whatsapp-cierre">
+      <a class="opcion iman" href="https://wa.me/573237160686?text=Hola%20Gabriela%2C%20quiero%20conversar%20sobre%20la%20comunicaci%C3%B3n%20de%20mi%20organizaci%C3%B3n." target="_blank" rel="noopener" data-evento="whatsapp-cierre" data-iman>
         <span class="opcion__titulo">Escribir por WhatsApp</span>
         <span class="opcion__accion">Abrir WhatsApp</span>
       </a>
-      <a class="opcion" href="mailto:gabrielajimenez.consultoria@gmail.com?subject=Conversaci%C3%B3n%20sobre%20comunicaci%C3%B3n" data-evento="correo-cierre">
+      <a class="opcion iman" href="mailto:gabrielajimenez.consultoria@gmail.com?subject=Conversaci%C3%B3n%20sobre%20comunicaci%C3%B3n" data-evento="correo-cierre" data-iman>
         <span class="opcion__titulo">Enviar un correo</span>
         <span class="opcion__accion">gabrielajimenez.consultoria@gmail.com</span>
       </a>
@@ -277,7 +434,7 @@
   </div>
 </footer>
 
-<div class="barra-movil" aria-hidden="false">
+<div class="barra-movil">
   <a class="btn btn--borde btn--chico" href="https://wa.me/573237160686?text=Hola%20Gabriela%2C%20quiero%20conversar%20sobre%20la%20comunicaci%C3%B3n%20de%20mi%20organizaci%C3%B3n." target="_blank" rel="noopener" data-evento="whatsapp-barra">WhatsApp</a>
   <a class="btn btn--oscuro btn--chico" href="https://calendar.app.google/MA7J7cr6MwokBeuJ8" target="_blank" rel="noopener" data-agenda data-evento="agenda-barra">Agendar gratis</a>
 </div>

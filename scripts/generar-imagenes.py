@@ -33,12 +33,12 @@ og = Image.new("RGB", (1200, 630), (255, 255, 255))
 og.paste(aura(640, grano=0.12), (600, -5))
 d = ImageDraw.Draw(og)
 try:
-    f1 = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 60)
+    f1 = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 54)
     f2 = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 28)
 except OSError:
     f1 = f2 = ImageFont.load_default()
-for i, linea in enumerate(["Lo que la Amazonía", "hace merece", "llegar más lejos"]):
-    d.text((80, 170 + i * 76), linea, font=f1, fill=(18, 26, 22))
-d.text((80, 455), "Gabriela Jiménez · Consultoría en comunicación", font=f2, fill=(61, 72, 66))
+for i, linea in enumerate(["Comunicación que", "conecta tu trabajo", "con las personas", "adecuadas"]):
+    d.text((80, 128 + i * 76), linea, font=f1, fill=(18, 26, 22))
+d.text((80, 470), "Gabriela Jiménez · Consultoría en comunicación · Colombia", font=f2, fill=(61, 72, 66))
 og.save("site/og-image.jpg", quality=84, optimize=True, progressive=True)
 print("ok")
