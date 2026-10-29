@@ -4,7 +4,7 @@
 
    1 agenda · 2 medición · 3 cabecera · 4 cortina · 5 revelar · 6 conectores
    7 red viva · 8 tarjetas 3D · 9 botones imantados · 10 capas con el cursor
-   11 talleres · 12 cifras */
+   11 talleres · 12 cifras · 13 carrusel de territorios */
 (function () {
   "use strict";
 
@@ -411,4 +411,88 @@
     }, { threshold: 0.6 });
     $$(".cifra__valor").forEach(function (el) { ioCifra.observe(el); });
   }
+
+  // 13. CARRUSEL DE TERRITORIOS ------------------------------------------
+  (function () {
+    var pista = $("[data-car-pista]");
+    var fotos = $("[data-car-fotos]");
+    if (!pista || !fotos) return;
+
+    var envoltura = pista.closest(".territorios");
+    var btnPrev = $("[data-car-prev]");
+    var btnNext = $("[data-car-next]");
+    var puntos = $$("[data-car-punto]");
+    var tarjetas = $$(".territorio", fotos);
+
+    var activo = function () {
+      var i = 0, mejor = Infinity;
+      tarjetas.forEach(function (t, idx) {
+        var d = Math.abs(t.offsetLeft - pista.scrollLeft);
+        if (d < mejor) { mejor = d; i = idx; }
+      });
+      return i;
+    };
+
+    var pintar = function () {
+      var desborda = pista.scrollWidth > pista.clientWidth + 2;
+      if (envoltura) envoltura.classList.toggle("sin-desborde", !desborda);
+      var i = activo();
+      puntos.forEach(function (p, idx) { p.classList.toggle("activo", idx === i); });
+      if (btnPrev) btnPrev.disabled = !desborda || pista.scrollLeft < 4;
+      if (btnNext) btnNext.disabled = !desborda || pista.scrollLeft > pista.scrollWidth - pista.clientWidth - 4;
+    };
+
+    var irA = function (i) {
+      i = limita(i, 0, tarjetas.length - 1);
+      var t = tarjetas[i];
+      if (t) pista.scrollTo({ left: t.offsetLeft, behavior: reducido ? "auto" : "smooth" });
+    };
+
+    if (btnPrev) btnPrev.addEventListener("click", function () { irA(activo() - 1); });
+    if (btnNext) btnNext.addEventListener("click", function () { irA(activo() + 1); });
+    puntos.forEach(function (p, idx) { p.addEventListener("click", function () { irA(idx); }); });
+
+    pista.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); irA(activo() + 1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); irA(activo() - 1); }
+    });
+
+    var pendS = false;
+    pista.addEventListener("scroll", function () {
+      if (pendS) return;
+      pendS = true;
+      requestAnimationFrame(function () { pintar(); pendS = false; });
+    });
+
+    // Arrastre con el mouse (el táctil y el trackpad ya deslizan de forma nativa)
+    if (finos) {
+      var arrastrando = false, inicioX = 0, inicioScroll = 0, movido = false;
+      pista.addEventListener("pointerdown", function (e) {
+        if (e.pointerType !== "mouse") return;
+        arrastrando = true; movido = false;
+        inicioX = e.clientX; inicioScroll = pista.scrollLeft;
+        pista.classList.add("arrastrando");
+      });
+      window.addEventListener("pointermove", function (e) {
+        if (!arrastrando) return;
+        var dx = e.clientX - inicioX;
+        if (Math.abs(dx) > 4) movido = true;
+        pista.scrollLeft = inicioScroll - dx;
+      });
+      var soltar = function () {
+        if (!arrastrando) return;
+        arrastrando = false;
+        pista.classList.remove("arrastrando");
+        irA(activo());
+      };
+      window.addEventListener("pointerup", soltar);
+      window.addEventListener("pointercancel", soltar);
+      // Evita que el arrastre dispare un click sobre la foto
+      fotos.addEventListener("click", function (e) { if (movido) { e.preventDefault(); e.stopPropagation(); } }, true);
+    }
+
+    pintar();
+    window.addEventListener("load", pintar);
+    window.addEventListener("resize", function () { pintar(); });
+  })();
 })();

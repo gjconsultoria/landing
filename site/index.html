@@ -24,10 +24,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&amp;display=swap">
-<link rel="stylesheet" href="/assets/styles.css?v=20261029a">
+<link rel="stylesheet" href="/assets/styles.css?v=20261029b">
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D3C7HSLH9T"></script>
-<script src="/assets/main.js?v=20261029a" defer></script>
+<script src="/assets/main.js?v=20261029b" defer></script>
 <!-- Cloudflare Web Analytics (sin cookies, sin datos personales) -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "8e3493f7ea244f278128128fefcb5674"}'></script>
 <script type="application/ld+json">
@@ -382,38 +382,52 @@
     </ul>
 
     <div class="territorios revela" data-territorios>
-      <p class="territorios__linea">Territorios que he recorrido</p>
-      <div class="territorios__fotos">
-          <figure class="territorio" style="--i:0">
-            <span class="territorio__marco">
-              <img src="/assets/fotos/gua-mavecure-rio-600.webp" srcset="/assets/fotos/gua-mavecure-rio-600.webp 600w, /assets/fotos/gua-mavecure-rio-900.webp 900w" sizes="(max-width: 760px) 62vw, 17vw" alt="Cerros de piedra sobre el río, en el Guainía" loading="lazy" decoding="async">
-            </span>
-            <figcaption class="territorio__lugar">Guainía</figcaption>
-          </figure>
-          <figure class="territorio" style="--i:1">
-            <span class="territorio__marco">
-              <img src="/assets/fotos/ama-raices-ceiba-600.webp" srcset="/assets/fotos/ama-raices-ceiba-600.webp 600w, /assets/fotos/ama-raices-ceiba-900.webp 900w" sizes="(max-width: 760px) 62vw, 17vw" alt="Raíces de un árbol gigante con personas caminando sobre ellas" loading="lazy" decoding="async">
-            </span>
-            <figcaption class="territorio__lugar">Amazonas</figcaption>
-          </figure>
-          <figure class="territorio" style="--i:2">
-            <span class="territorio__marco">
-              <img src="/assets/fotos/ama-victoria-600.webp" srcset="/assets/fotos/ama-victoria-600.webp 600w, /assets/fotos/ama-victoria-900.webp 900w" sizes="(max-width: 760px) 62vw, 17vw" alt="Victorias regias abiertas sobre el agua" loading="lazy" decoding="async">
-            </span>
-            <figcaption class="territorio__lugar">Amazonas</figcaption>
-          </figure>
-          <figure class="territorio" style="--i:3">
-            <span class="territorio__marco">
-              <img src="/assets/fotos/gua-espejo-rio-600.webp" srcset="/assets/fotos/gua-espejo-rio-600.webp 600w, /assets/fotos/gua-espejo-rio-900.webp 900w" sizes="(max-width: 760px) 62vw, 17vw" alt="El río como un espejo que refleja las nubes" loading="lazy" decoding="async">
-            </span>
-            <figcaption class="territorio__lugar">Guainía</figcaption>
-          </figure>
-          <figure class="territorio" style="--i:4">
-            <span class="territorio__marco">
-              <img src="/assets/fotos/ama-escuela-600.webp" srcset="/assets/fotos/ama-escuela-600.webp 600w, /assets/fotos/ama-escuela-900.webp 900w" sizes="(max-width: 760px) 62vw, 17vw" alt="Escuela rural de madera en una comunidad" loading="lazy" decoding="async">
-            </span>
-            <figcaption class="territorio__lugar">Amazonas</figcaption>
-          </figure>
+      <div class="territorios__cabeza">
+        <p class="territorios__linea">Algunos territorios que he recorrido</p>
+        <div class="territorios__flechas">
+          <button class="territorios__flecha" type="button" data-car-prev aria-label="Foto anterior">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="territorios__flecha" type="button" data-car-next aria-label="Foto siguiente">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="territorios__pista" data-car-pista tabindex="0" role="group" aria-label="Carrusel de fotos de territorios recorridos">
+        <div class="territorios__fotos" data-car-fotos>
+            <figure class="territorio" style="--i:0">
+              <span class="territorio__marco">
+                <img src="/assets/fotos/gua-mavecure-rio-600.webp" srcset="/assets/fotos/gua-mavecure-rio-600.webp 600w, /assets/fotos/gua-mavecure-rio-900.webp 900w" sizes="(max-width: 760px) 62vw, 17vw" alt="Cerros de piedra sobre el río, en el Guainía" loading="lazy" decoding="async">
+              </span>
+            </figure>
+            <figure class="territorio" style="--i:1">
+              <span class="territorio__marco">
+                <img src="/assets/fotos/ama-raices-ceiba-600.webp" srcset="/assets/fotos/ama-raices-ceiba-600.webp 600w, /assets/fotos/ama-raices-ceiba-900.webp 900w" sizes="(max-width: 760px) 62vw, 17vw" alt="Raíces de un árbol gigante con personas caminando sobre ellas" loading="lazy" decoding="async">
+              </span>
+            </figure>
+            <figure class="territorio" style="--i:2">
+              <span class="territorio__marco">
+                <img src="/assets/fotos/ama-victoria-600.webp" srcset="/assets/fotos/ama-victoria-600.webp 600w, /assets/fotos/ama-victoria-900.webp 900w" sizes="(max-width: 760px) 62vw, 17vw" alt="Victorias regias abiertas sobre el agua" loading="lazy" decoding="async">
+              </span>
+            </figure>
+            <figure class="territorio" style="--i:3">
+              <span class="territorio__marco">
+                <img src="/assets/fotos/gua-espejo-rio-600.webp" srcset="/assets/fotos/gua-espejo-rio-600.webp 600w, /assets/fotos/gua-espejo-rio-900.webp 900w" sizes="(max-width: 760px) 62vw, 17vw" alt="El río como un espejo que refleja las nubes" loading="lazy" decoding="async">
+              </span>
+            </figure>
+            <figure class="territorio" style="--i:4">
+              <span class="territorio__marco">
+                <img src="/assets/fotos/ama-escuela-600.webp" srcset="/assets/fotos/ama-escuela-600.webp 600w, /assets/fotos/ama-escuela-900.webp 900w" sizes="(max-width: 760px) 62vw, 17vw" alt="Escuela rural de madera en una comunidad" loading="lazy" decoding="async">
+              </span>
+            </figure>
+        </div>
+      </div>
+      <div class="territorios__puntos" data-car-puntos>
+            <button class="territorios__punto" type="button" data-car-punto="0" aria-label="Ir a la foto 1"></button>
+            <button class="territorios__punto" type="button" data-car-punto="1" aria-label="Ir a la foto 2"></button>
+            <button class="territorios__punto" type="button" data-car-punto="2" aria-label="Ir a la foto 3"></button>
+            <button class="territorios__punto" type="button" data-car-punto="3" aria-label="Ir a la foto 4"></button>
+            <button class="territorios__punto" type="button" data-car-punto="4" aria-label="Ir a la foto 5"></button>
       </div>
     </div>
   </div>

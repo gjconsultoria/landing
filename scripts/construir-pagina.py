@@ -15,7 +15,7 @@ AGENDA = "https://calendar.app.google/MA7J7cr6MwokBeuJ8"
 WA = "https://wa.me/573237160686?text="
 CORREO = "gabrielajimenez.consultoria@gmail.com"
 SITIO = "https://gabrielajimenez-consultoria.pages.dev/"
-VER = "20261029a"
+VER = "20261029b"
 
 
 def hoja(x, y, w, rot, capa=2, forma="hoja-palma", deg="g-selva", ar="3/5"):
@@ -168,13 +168,19 @@ def territorios_html():
     out = []
     for i, (n, lugar, alt) in enumerate(TERRITORIOS):
         srcset = f"/assets/fotos/{n}-600.webp 600w, /assets/fotos/{n}-900.webp 900w"
-        out.append(f'''          <figure class="territorio" style="--i:{i}">
-            <span class="territorio__marco">
-              <img src="/assets/fotos/{n}-600.webp" srcset="{srcset}" sizes="(max-width: 760px) 62vw, 17vw" alt="{alt}" loading="lazy" decoding="async">
-            </span>
-            <figcaption class="territorio__lugar">{lugar}</figcaption>
-          </figure>''')
+        out.append(f'''            <figure class="territorio" style="--i:{i}">
+              <span class="territorio__marco">
+                <img src="/assets/fotos/{n}-600.webp" srcset="{srcset}" sizes="(max-width: 760px) 62vw, 17vw" alt="{alt}" loading="lazy" decoding="async">
+              </span>
+            </figure>''')
     return "\n".join(out)
+
+
+def territorios_puntos():
+    return "\n".join(
+        f'            <button class="territorios__punto" type="button" data-car-punto="{i}" aria-label="Ir a la foto {i + 1}"></button>'
+        for i in range(len(TERRITORIOS))
+    )
 
 
 def cifras_html():
@@ -399,9 +405,24 @@ def construir():
     </ul>
 
     <div class="territorios revela" data-territorios>
-      <p class="territorios__linea">Territorios que he recorrido</p>
-      <div class="territorios__fotos">
+      <div class="territorios__cabeza">
+        <p class="territorios__linea">Algunos territorios que he recorrido</p>
+        <div class="territorios__flechas">
+          <button class="territorios__flecha" type="button" data-car-prev aria-label="Foto anterior">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="territorios__flecha" type="button" data-car-next aria-label="Foto siguiente">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="territorios__pista" data-car-pista tabindex="0" role="group" aria-label="Carrusel de fotos de territorios recorridos">
+        <div class="territorios__fotos" data-car-fotos>
 {territorios_html()}
+        </div>
+      </div>
+      <div class="territorios__puntos" data-car-puntos>
+{territorios_puntos()}
       </div>
     </div>
   </div>
